@@ -1,7 +1,7 @@
-# Kras !!!
+# crasUI !!!
 
 Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
-* **cras** - Dieses Projekt stellt ein responsives Angular Frontend bereit
+* **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
 * **[cras](https://github.com/jenszech/cras)** - stellt das benötigte Backend bereit
 * Optional **[crasBadgeIt](https://github.com/jenszech/crasBadgeIt)** - Ein microcontroller projekt for small ePaper devices
 * Optional **[crasAndroidViewer](https://github.com/jenszech/crasAndroidViewer)** - Eine Android App mit einem einfachem fullscreen Webviewer

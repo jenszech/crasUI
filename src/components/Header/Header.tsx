@@ -17,7 +17,7 @@ const Header = () => {
         <div>
             <Navbar color="dark" dark expand="xs"
                     style={{height: 80}}>
-                <img src={AVATAR} alt="KRAS" className="img-fluid rounded-circle" style={{width: 36, margin: 10}}/>
+                <img src={AVATAR} alt="crasUI" className="img-fluid rounded-circle" style={{width: 36, margin: 10}}/>
                 <NavbarBrand href="/" className="mr-auto">CRAS UI&nbsp;</NavbarBrand>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2"/>
                 <Collapse isOpen={!collapsed} navbar>
