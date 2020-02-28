@@ -1,0 +1,33 @@
+.sidecard {
+  font-family: Oswald, sans-serif;
+  background-color: #FEFAD4;
+  color: #765D69;
+  width: 300px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.sidecard .room-name {
+  font-size: 1.5rem;
+  border-bottom: #cbb2be;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.sidecard .room-name strong {
+  font-weight: bold;
+}
+
+.sidecard .room-image img{
+  width: 200px;
+  height: 250px;
+  margin: 15px;
+}
+
+.sidecard .current-date {
+  font-size: 1.5rem;
+  border-top: #cbb2be;
+  border-top-width: 1px;
+  border-top-style: solid;
+  font-weight: bold;
+}

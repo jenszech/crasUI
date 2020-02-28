@@ -1,0 +1,55 @@
+.taskList {
+  font-family: Oswald, sans-serif;
+  color: #765D69;
+  text-align: left;
+}
+
+.taskList .header{
+  font-size: 1.75rem;
+  background-color: #FEFAD4;
+  padding: 10px;
+}
+.taskList .header .time{
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+.taskList .header strong{
+  font-weight: bold;
+}
+
+.taskList .taskRow{
+  border-top: #cbb2be;
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.taskList .row .title{
+  font-size: 1.5rem;
+  margin:0px;
+}
+.taskList .row  .user{
+  font-size: 1.25rem;
+  margin:0px;
+  color: #bca5af;;
+}
+
+.taskList .free .title{
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.taskList .free {
+  cursor: pointer;
+}
+
+.taskList .row:hover {
+  background-color: #765D69;
+}
+
+.taskList .row:hover {
+  color: #FFFFFF;
+}

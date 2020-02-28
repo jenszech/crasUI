@@ -1,0 +1,19 @@
+.roomInfoBox {
+  background: #eee;
+  padding: 10px;
+}
+
+.roomInfoBox .room-name {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+.roomInfoBox .room-desc {
+  font-size: 1.25rem;
+}
+.roomInfoBox .room-meta {
+  font-size: 1.25rem;
+}
+
+.roomInfoBox svg {
+  margin-right: 5px;
+}
