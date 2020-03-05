@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //apiURL: 'http://localhost:3001',
-  apiURL: 'https://aa63d17e-62a7-4b3d-878e-3cf639247178.mock.pstmn.io',
+  apiURL: 'http://localhost:3001',
   roomsEndpoint: '/rooms',
   roomDetailEndpoint: '/rooms/'
 
