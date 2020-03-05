@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { Container} from "reactstrap";
 import FloorList from "../components/FloorList";
+import {Component} from "react";
 
 
-const roomList = () => {
-    return (
-        <Container>
-            <FloorList/>
-        </Container>
-    );
+class RoomList extends Component {
+    render() {
+        return (
+            <Container>
+                <FloorList/>
+            </Container>
+        );
+    }
 }
-
-export default roomList;
+export default RoomList;

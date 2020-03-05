@@ -1,4 +1,4 @@
-# crasUI !!!
+# crasUI 
 
 Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
 * **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
@@ -37,18 +37,15 @@ siehe: [Raspberry Setup](https://github.com/jenszech/cras/wiki/System-setup-on-R
 ### Installation
 #### Installation des crasUI Projekts
 ```
-git clone https://github.com/julienP88/kras.git
-cd kras
+git clone https://github.com/jenszech/crasUI.git
+cd crasUI
 npm install
-```
-
-#### Installation eines Angular WebServers
-```
-sudo npm install -g angular-http-server
 ```
 
 #### Einrichten als Hintergrundprocess
 Einrichten als Process mit Autostart und start des http Server
+
+DEPRECATED UPDATE FOLGT
 ```
 sudo npm install pm2@latest -g
 pm2 start angular-http-server --name crasFrontend -- -p 8080 --path release/kras/
@@ -159,17 +156,14 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Jens Zech** - *Initial work* - [GitHub Profil](https://github.com/jenszech)
-* **julienP88** - *Project Owner* - [GitHub Profil](https://github.com/julienP88)
+* **Jens Zech** - *Project owner* - [GitHub Profil](https://github.com/jenszech)
+* **julienP88** - *Initial work* - [GitHub Profil](https://github.com/julienP88)
 * **Anna Utlik** - *Main contributor* - [GitHub Profil](https://github.com/anna-utlik)
 
 See also the list of [contributors](https://github.com/julienP88/kras/contributors) who participated in this project.
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
 
 ##Weitere Infos:
 [Wiki - Raspberry Setup](https://github.com/jenszech/cras/wiki/System-setup-on-Raspberry-Pi-example)
