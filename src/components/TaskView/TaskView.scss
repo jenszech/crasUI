@@ -1,0 +1,44 @@
+.task {
+  font-family: Oswald, sans-serif;
+  font-weight: 200;
+  color: #765D69;
+  text-align: center;
+}
+
+.task .row {
+  background: #EEEEEE;
+  padding: 20px;
+  margin-left: 10px;
+  margin-bottom: 25px;
+}
+
+.task .row  .time{
+  font-size: 1.5rem;
+}
+.task .row  .title{
+  font-size: 1.75rem;
+  font-weight: bolder;
+}
+.task .row  .user{
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.task .free .title{
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.task .free {
+  cursor: pointer;
+}
+
+.task .row:hover {
+  background-color: #765D69;
+}
+
+.task .row:hover .col {
+  color: #FFFFFF;
+}
+
