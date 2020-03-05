@@ -6,17 +6,9 @@ import {
     Container, Row, Col,
 } from 'reactstrap';
 import './RoomInfoBox.scss';
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {
-    faCheckSquare, faAppleAlt, faThumbtack, faStop, faVideo, faMicrophone, faFileCode,
-    faSquare, faDesktop, faHdd, faPhone, faHome
-} from '@fortawesome/free-solid-svg-icons'
 import {Component} from "react";
 import {Room} from "../../shared/models/Room";
 import MetaIcon from "../MetaIcon";
-
-library.add(faCheckSquare, faAppleAlt, faThumbtack, faStop, faVideo, faMicrophone, faFileCode,
-    faSquare, faDesktop, faHdd, faPhone, faHome);
 
 interface CustomRoomInfoProps {
     room: Room;
@@ -41,5 +33,6 @@ class RoomInfoBox extends Component<CustomRoomInfoProps> {
             </Fragment>
         );
     }
-};
+}
+// noinspection JSUnusedGlobalSymbols
 export default RoomInfoBox;

@@ -10,13 +10,13 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faAppleAlt,
     faCheckSquare,
-    faDesktop,
-    faFileCode,
+    faTv,
+    faClipboardList,
     faHdd,
-    faHome,
+    faPencilAlt,
     faMicrophone,
     faPhone,
-    faSquare,
+    faChalkboard,
     faStop,
     faThumbtack,
     faVideo,
@@ -25,8 +25,8 @@ import {
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import {AusstattungType} from "../../shared/models/AusstattungType";
 
-library.add(faCheckSquare, faAppleAlt, faThumbtack, faStop, faVideo, faMicrophone, faFileCode,
-    faSquare, faDesktop, faHdd, faPhone, faHome, faQuestionCircle);
+library.add(faCheckSquare, faAppleAlt, faThumbtack, faStop, faVideo, faMicrophone, faClipboardList,
+    faChalkboard, faTv, faHdd, faPhone, faPencilAlt, faQuestionCircle);
 
 interface CustomIconProps {
     icon: AusstattungType;
@@ -47,26 +47,26 @@ class MetaIcon extends Component<CustomIconProps> {
         switch (icon) {
             case AusstattungType.typ_appleTv:
                 return faAppleAlt.iconName;
-            case AusstattungType.typ_pinnwand:
-                return faThumbtack.iconName;
-            case AusstattungType.typ_mobVK:
-                return faStop.iconName;
             case AusstattungType.typ_camera:
                 return faVideo.iconName;
-            case AusstattungType.typ_mobPolycom:
-                return faMicrophone.iconName;
-            case AusstattungType.typ_flipchart:
-                return faFileCode.iconName;
-            case AusstattungType.typ_whiteboard:
-                return faSquare.iconName;
-            case AusstattungType.typ_tv:
-                return faDesktop.iconName;
-            case AusstattungType.typ_beamer:
-                return faHdd.iconName;
+            case AusstattungType.typ_mobVK:
+                return faStop.iconName;
             case AusstattungType.typ_polycom:
                 return faPhone.iconName;
+            case AusstattungType.typ_mobPolycom:
+                return faMicrophone.iconName;
+            case AusstattungType.typ_pinnwand:
+                return faThumbtack.iconName;
+            case AusstattungType.typ_flipchart:
+                return faClipboardList.iconName;
+            case AusstattungType.typ_whiteboard:
+                return faChalkboard.iconName;
+            case AusstattungType.typ_tv:
+                return faTv.iconName;
+            case AusstattungType.typ_beamer:
+                return faHdd.iconName;
             case AusstattungType.typ_desktop:
-                return faHome.iconName;
+                return faPencilAlt.iconName;
             default:
                 return faQuestionCircle.iconName;
         }
@@ -76,14 +76,16 @@ class MetaIcon extends Component<CustomIconProps> {
         switch (icon) {
             case AusstattungType.typ_appleTv:
                 return 'Apple TV';
-            case AusstattungType.typ_pinnwand:
-                return 'Pinnwand';
-            case AusstattungType.typ_mobVK:
-                return 'Mobile Videokonferenz Anlage';
             case AusstattungType.typ_camera:
                 return 'Video Camera';
+            case AusstattungType.typ_mobVK:
+                return 'Mobile Videokonferenz Anlage';
+            case AusstattungType.typ_polycom:
+                return 'Polycom Videokonferenz';
             case AusstattungType.typ_mobPolycom:
                 return 'Polycom Videokonferenz (mobil)';
+            case AusstattungType.typ_pinnwand:
+                return 'Pinnwand';
             case AusstattungType.typ_flipchart:
                 return 'Flipchart';
             case AusstattungType.typ_whiteboard:
@@ -92,13 +94,12 @@ class MetaIcon extends Component<CustomIconProps> {
                 return 'Monitor';
             case AusstattungType.typ_beamer:
                 return 'Beamer';
-            case AusstattungType.typ_polycom:
-                return 'Polycom Videokonferenz';
             case AusstattungType.typ_desktop:
                 return 'Schreibtisch';
             default:
                 return '';
         }
     }
-};
+}
+// noinspection JSUnusedGlobalSymbols
 export default MetaIcon;
