@@ -23,5 +23,5 @@ const SideCard = () => (
         </Container>
     </Fragment>
 );
-
+// noinspection JSUnusedGlobalSymbols
 export default SideCard;

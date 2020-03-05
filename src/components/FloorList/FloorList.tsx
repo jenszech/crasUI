@@ -55,5 +55,5 @@ class FloorList extends Component {
         );
     }
 }
-
+// noinspection JSUnusedGlobalSymbols
 export default FloorList;

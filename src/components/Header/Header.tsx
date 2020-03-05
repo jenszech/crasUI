@@ -39,4 +39,5 @@ const Header = () => {
         </div>
     );
 };
+// noinspection JSUnusedGlobalSymbols
 export default Header;

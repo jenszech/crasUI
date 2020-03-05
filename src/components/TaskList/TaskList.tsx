@@ -38,5 +38,5 @@ const TaskList = () => (
         </Container>
     </Fragment>
 );
-
+// noinspection JSUnusedGlobalSymbols
 export default TaskList;

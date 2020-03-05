@@ -16,9 +16,6 @@ export class DataService {
             })
     }
 
-    public getRoomDetails(roomId: string) {
-    }
-
     // Error handling
     /*
     private handleError(error) {
