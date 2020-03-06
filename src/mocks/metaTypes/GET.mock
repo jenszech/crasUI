@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "types": [
+    "typ_mobVK",
+    "typ_mobPolycom",
+    "typ_flipchart",
+    "typ_whiteboard",
+    "typ_polycom",
+    "typ_appleTv",
+    "typ_pinnwand",
+    "typ_desktop",
+    "typ_beamer",
+    "typ_tv",
+    "typ_camera"
+  ]
+}
