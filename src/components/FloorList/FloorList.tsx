@@ -7,8 +7,6 @@ import RoomInfoBox from '../RoomInfoBox';
 import './FloorList.scss';
 import {Component} from "react";
 import {RoomService} from "../../shared/roomService";
-//import {Room} from '../shared/models/Room';
-//import {AusstattungType} from '../shared/models/AusstattungType';
 
 class FloorList extends Component {
     state = {floors: [], rooms: []};
@@ -17,7 +15,6 @@ class FloorList extends Component {
     componentDidMount() {
         this.roomsService.loadRooms(this.updateUi);
         console.log("Fetch Roomlist final 2: ");
-
     }
 
     private updateUi = (): void => {

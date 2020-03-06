@@ -9,10 +9,10 @@ export class RoomService {
 
 
 
-    public async loadRooms(callbackFunction:() => void) {
+    public loadRooms(callbackFunction:() => void) {
         if (this.roomsByFloor.size === 0) {
             console.log("Fetch Rooms");
-            await this.dataService.getRooms()
+             this.dataService.getRooms()
                 .then(result => {
                     this.roomsByFloor = this.parseJson(result);
                     console.log("Fetch Roomlist loaded: " + this.roomsByFloor);

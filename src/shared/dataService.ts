@@ -3,7 +3,7 @@ import {environment} from '../environments/environment';
 export class DataService {
     public getRooms() {
         return fetch(environment.apiURL + environment.roomsEndpoint)
-            .then((response) => {
+            .then(response => {
                 console.log("Fetch: "+environment.apiURL + environment.roomsEndpoint);
                 const contentType = response.headers.get('content-type');
                 if (!response.ok) {
