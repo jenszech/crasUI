@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component, Fragment } from 'react';
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col, Container, Progress } from 'reactstrap';
 import './TaskView.scss';
 import {TaskService} from "../../shared/taskService";
 import {Booking} from "../../shared/models/Booking";
@@ -17,7 +17,8 @@ class TaskView extends Component<CustomRoomInfoProps> {
 
     constructor(props: Readonly<CustomRoomInfoProps>) {
         super(props);
-        this.openRoom = this.openRoom.bind(this);
+        this.showTaskList = this.showTaskList.bind(this);
+        this.showRoomMeta = this.showRoomMeta.bind(this);
     }
 
     componentDidMount() {
@@ -33,7 +34,7 @@ class TaskView extends Component<CustomRoomInfoProps> {
         });
     };
 
-    public openRoom(room : Room) {
+    public showTaskList(room : Room) {
         console.log("Open Room: "+room.id);
         history.push({
             pathname: '/detail',
@@ -41,8 +42,20 @@ class TaskView extends Component<CustomRoomInfoProps> {
             state: { room: room }
         })
     }
+    public showRoomMeta(room : Room) {
+        //ToDo Implemtierungen einer eigenen Detailansicht
+        return (
+          alert(
+              "Raum: "+room.meta.room+"\n" +
+              "Etage: "+room.meta.etage+"\n" +
+              "Plaetze: "+room.meta.plaetze+"\n" +
+              "Telefon: "+room.meta.tel+"\n" +
+              ""
+          )
+        );
+    }
 
-    private getFormatTime(date: Date): string {
+   private static getFormatTime(date: Date): string {
         const options = {
             hour: 'numeric',
             minute: 'numeric',
@@ -51,22 +64,36 @@ class TaskView extends Component<CustomRoomInfoProps> {
         return (new Intl.DateTimeFormat('de-DE', options).format(date));
     }
 
-    private getRowClass(appointment : Booking|undefined):string {
-        if ((appointment === undefined)||(appointment.blocked=== true)) {
+    private static getRowClass(appointment : Booking|undefined):string {
+        if ((appointment === undefined)||appointment.blocked) {
             return "";
         }
         return "free";
     }
 
-    private taskEntrie(appointment: Booking|undefined) {
+    private static taskEntrie(appointment: Booking|undefined) {
         if (appointment === undefined) { return }
         return (
-            <Row xs="1" className={this.getRowClass(appointment)}>
+            <Row xs="1" className={TaskView.getRowClass(appointment)}>
                 <Col
-                    className="time">{this.getFormatTime(appointment.startTime)} - {this.getFormatTime(appointment.endTime)} </Col>
+                    className="time">{TaskView.getFormatTime(appointment.startTime)} - {TaskView.getFormatTime(appointment.endTime)} </Col>
                 <Col className="title">{appointment.title}</Col>
                 <Col className="user">{appointment.user}</Col>
             </Row>
+        );
+    }
+    private static progressBar(appointment: Booking|undefined) {
+        let now = new Date();
+        if (appointment === undefined) { return }
+        if (!((appointment.startTime < now) && (appointment.endTime > now))) {return};
+        let start = appointment.startTime.getHours()*60 + appointment.startTime.getMinutes();
+        let actMinutes = now.getHours()*60 + now.getMinutes();
+        let end = appointment.endTime.getHours()*60 + appointment.endTime.getMinutes();
+        let dauer = (end-start);
+        let rest = (end-actMinutes);
+        let progress = 100 - ((rest / dauer) * 100)
+        return (
+            <Progress color="awesomer" value={progress} >Noch {rest} min.</Progress>
         );
     }
 
@@ -74,15 +101,16 @@ render() {
         return (
             <Fragment>
                 <Container className="task">
-                    {this.taskEntrie(this.state.current)}
-                    {this.taskEntrie(this.state.next)}
+                    {TaskView.progressBar(this.state.current)}
+                    {TaskView.taskEntrie(this.state.current)}
+                    {TaskView.taskEntrie(this.state.next)}
                 </Container>
                 <Container className="button">
                     <Row>
-                        <Col className="buttonLeft">
+                        <Col className="buttonLeft" onClick={() => this.showRoomMeta(this.props.room)}>
                             &gt;&gt; Raum Informationen
                         </Col>
-                        <Col className="buttonRight" onClick={() => this.openRoom(this.props.room)}>
+                        <Col className="buttonRight" onClick={() => this.showTaskList(this.props.room)}>
                             &gt;&gt; Alle Termine
                         </Col>
                     </Row>
