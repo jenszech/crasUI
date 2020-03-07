@@ -6,10 +6,15 @@ import {Component} from "react";
 import {Room} from "../shared/models/Room";
 import { RouteComponentProps } from 'react-router';
 
+interface CustomRoomInfoProps {
+    room: Room;
+}
+
 class roomOverview extends Component<RouteComponentProps> {
     constructor(props: Readonly<RouteComponentProps>) {
         super(props);
-        console.log("constructor - roomOverview => "+ props.location.state);
+        let tmp = props.location.state as CustomRoomInfoProps;
+        console.log("constructor - roomOverview => "+ tmp.room.id);
     }
 
     componentDidMount() {
