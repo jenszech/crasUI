@@ -5,6 +5,8 @@ import './TaskView.scss';
 import {TaskService} from "../../shared/taskService";
 import {Booking} from "../../shared/models/Booking";
 import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
+import {Room} from "../../shared/models/Room";
+import history from "../../shared/history";
 
 class TaskView extends Component<CustomRoomInfoProps> {
     state = {
@@ -13,9 +15,14 @@ class TaskView extends Component<CustomRoomInfoProps> {
     };
     private taskService = new TaskService();
 
+    constructor(props: Readonly<CustomRoomInfoProps>) {
+        super(props);
+        this.openRoom = this.openRoom.bind(this);
+    }
+
     componentDidMount() {
         //this.setState({post: response.data}));
-        this.taskService.loadTasks("Raum_Gutenberg@tde.thalia.de",this.updateUi);
+        this.taskService.loadTasks(this.props.room.id, this.updateUi);
         console.log("Fetch TaskView final: "+this.props.room.id);
     }
 
@@ -25,6 +32,15 @@ class TaskView extends Component<CustomRoomInfoProps> {
             next: this.taskService.getNextAppointment()
         });
     };
+
+    public openRoom(room : Room) {
+        console.log("Open Room: "+room.id);
+        history.push({
+            pathname: '/detail',
+            search: '',
+            state: { room: room }
+        })
+    }
 
     private getFormatTime(date: Date): string {
         const options = {
@@ -63,8 +79,12 @@ render() {
                 </Container>
                 <Container className="button">
                     <Row>
-                        <Col className="buttonLeft">&gt;&gt; Raum Informationen</Col>
-                        <Col className="buttonRight">&gt;&gt; Alle Termine</Col>
+                        <Col className="buttonLeft">
+                            &gt;&gt; Raum Informationen
+                        </Col>
+                        <Col className="buttonRight" onClick={() => this.openRoom(this.props.room)}>
+                            &gt;&gt; Alle Termine
+                        </Col>
                     </Row>
                 </Container>
             </Fragment>

@@ -16,7 +16,7 @@ class TaskList extends Component<CustomRoomInfoProps> {
     private date = new Date();
 
     componentDidMount() {
-        this.taskService.loadTasks("Raum_Gutenberg@tde.thalia.de",this.updateUi);
+        this.taskService.loadTasks(this.props.room.id,this.updateUi);
         console.log("Fetch Tasklist final: "+this.props.room.id );
     }
 
