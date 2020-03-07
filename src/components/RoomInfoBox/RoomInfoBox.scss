@@ -1,6 +1,7 @@
-.roomInfoBox {
+.roomInfoBox .row {
   background: #eee;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .roomInfoBox .room-name {
@@ -17,3 +18,11 @@
 .roomInfoBox svg {
   margin-right: 5px;
 }
+
+.roomInfoBox .row:hover {
+  background-color: #765D69;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+

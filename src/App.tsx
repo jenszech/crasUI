@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { Fragment } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import RoomOverview from './page/RoomOverview';
 import RoomList from './page/RoomList';
 import RoomDetail from './page/RoomDetail';
 
+import history from './shared/history';
+
 function App() {
     return (
         <Fragment>
-            <BrowserRouter>
+            <Router history={history}>
                 <Header/>
-
                 <main>
                     <Switch>
                         <Route path="/" component={RoomList} exact/>
@@ -20,7 +21,7 @@ function App() {
                         <Route path="/detail" component={RoomDetail}/>
                     </Switch>
                 </main>
-            </BrowserRouter>
+            </Router>
         </Fragment>
     );
 }

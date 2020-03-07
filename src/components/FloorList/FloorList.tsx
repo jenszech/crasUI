@@ -33,13 +33,13 @@ class FloorList extends Component {
                         <Col>Räume</Col>
                     </Row>
                     {this.state.floors.map(floor => (
-                        <Row className="floorRow">
+                        <Row key={floor} className="floorRow">
                             <Col xs={{size: 1}}>{floor}</Col>
                             <Col>
                                 <Container>
                                     <Row>
                                         {this.roomsService.getRoomByFloor(floor)?.map(room => (
-                                            <Col><RoomInfoBox room={room}/></Col>
+                                            <Col key={room.id}><RoomInfoBox room={room}/></Col>
                                         ))}
                                     </Row>
                                 </Container>
