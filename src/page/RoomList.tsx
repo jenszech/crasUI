@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Container} from "reactstrap";
 import FloorList from "../components/FloorList";
 import {Component} from "react";
-import {Room} from "../shared/models/Room";
+import {RouteComponentProps} from "react-router";
 
-
-class RoomList extends Component {
+class RoomList extends Component<RouteComponentProps> {
     render() {
         return (
             <Container>

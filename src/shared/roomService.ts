@@ -7,8 +7,6 @@ export class RoomService {
     private roomsByFloor: Map<string, Array<Room>> = new Map<string, Array<Room>>();
     private dataService = new DataService();
 
-
-
     public loadRooms(callbackFunction:() => void) {
         if (this.roomsByFloor.size === 0) {
             console.log("Fetch Rooms");

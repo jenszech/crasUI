@@ -16,6 +16,20 @@ export class DataService {
             })
     }
 
+    public getTasksByRooms(roomId:string) {
+        return fetch(environment.apiURL + environment.roomDetailEndpoint + roomId)
+            .then(response => {
+                console.log("Fetch: "+environment.apiURL + environment.roomDetailEndpoint + roomId);
+                const contentType = response.headers.get('content-type');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new TypeError("Oops, we haven't got JSON!");
+                }
+                return response.json();
+            })
+    }
     // Error handling
     /*
     private handleError(error) {

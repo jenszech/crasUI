@@ -37,8 +37,30 @@
 .task .row:hover {
   background-color: #765D69;
 }
-
 .task .row:hover .col {
+  color: #FFFFFF;
+}
+
+.button .row {
+  margin-left: 10px;
+  margin-bottom: 25px;
+}
+.button .col {
+  background: #EEEEEE;
+  padding: 20px;
+}
+.button .buttonLeft {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.button .buttonRight {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.button .col:hover {
+  background-color: #765D69;
+}
+.button .col:hover .col {
   color: #FFFFFF;
 }
 

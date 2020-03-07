@@ -19,8 +19,8 @@ class FloorList extends Component {
 
     private updateUi = (): void => {
         this.setState({
-            floors: Array.from(this.roomsService.getFloors()),
-            rooms: this.roomsService.getRooms()
+            rooms: this.roomsService.getRooms(),
+            floors: Array.from(this.roomsService.getFloors())
         });
     };
 
