@@ -3,22 +3,20 @@ import {Col, Container, Row} from "reactstrap";
 import SideCard from "../components/SideCard";
 import TaskView from "../components/TaskView";
 import {Component} from "react";
-import {Room} from "../shared/models/Room";
 import { RouteComponentProps } from 'react-router';
+import { CustomRoomInfoProps} from "../shared/interface/CustomRoomInfoProps";
 
-interface CustomRoomInfoProps {
-    room: Room;
-}
 
 class roomOverview extends Component<RouteComponentProps> {
+    state = {room: (this.props.location.state as CustomRoomInfoProps).room};
+
     constructor(props: Readonly<RouteComponentProps>) {
         super(props);
-        let tmp = props.location.state as CustomRoomInfoProps;
-        console.log("constructor - roomOverview => "+ tmp.room.id);
+        console.log("constructor - roomOverview => "+ this.state.room.id);
     }
 
     componentDidMount() {
-        console.log("componmentDidMount - roomOverview => "+ this);
+        //console.log("componmentDidMount - roomOverview => "+ this);
     }
 
     render() {
@@ -28,7 +26,7 @@ class roomOverview extends Component<RouteComponentProps> {
 
                     <Col xs={{order: 2}} md={{size: 3, order: 1}} tag="aside"
                          className="pb-5 mb-5 pb-md-0 mb-md-0 mx-auto mx-md-0">
-                        <SideCard/>
+                        <SideCard room={this.state.room}/>
                     </Col>
 
                     <Col xs={{order: 1}} md={{size: 7, offset: 1}} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">

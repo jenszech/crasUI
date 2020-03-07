@@ -9,12 +9,8 @@ import './RoomInfoBox.scss';
 import {Component} from "react";
 import {Room} from "../../shared/models/Room";
 import MetaIcon from "../MetaIcon";
-
+import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
 import history from '../../shared/history';
-
-interface CustomRoomInfoProps {
-    room: Room;
-}
 
 class RoomInfoBox extends Component<CustomRoomInfoProps> {
     constructor(props: Readonly<CustomRoomInfoProps>) {
