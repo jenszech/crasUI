@@ -7,5 +7,6 @@ export class RoomMetaInfo {
     tel: string = "";
     etage: string = "";
     plaetze: number = 0;
+    description: string ="";
     ausstattung: Array<AusstattungType> = new Array<AusstattungType>();
 }

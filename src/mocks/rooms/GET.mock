@@ -9,11 +9,12 @@ Response-Delay: 100
     "name": "R_TDE_B_Johannes Gutenberg_2.OG",
     "meta": {
       "id": "Raum_Gutenberg@tde.thalia.de",
-      "room": "Johannes Gutenberg 2",
+      "room": "Johannes Gutenberg",
       "name": "R_TDE_B_Johannes Gutenberg_2.OG",
       "tel": "Spinne: 02331-8046-4199",
       "etage": "2 OG",
       "plaetze": "8",
+      "description": "* um 1400 in Mainz\r\n† vor dem 26. Februar 1468 ebenda\r\ngilt als Erfinder des modernen Buchdrucks",
       "ausstattung": [
         "typ_mobVK",
         "typ_whiteboard"
@@ -30,6 +31,7 @@ Response-Delay: 100
       "tel": "Spinne: 02331-8046-4195",
       "etage": "2 OG",
       "plaetze": "16",
+      "description": "* 7. Novmenber 1867 in Warschau\r\n † 4. Juli 1934 bei Passy\r\nErste weibliche Nobelpreisträgerin, wies Radioaktivtät nach.",
       "ausstattung": [
         "typ_mobVK",
         "typ_mobPolycom",
@@ -48,6 +50,7 @@ Response-Delay: 100
       "tel": "Spinne: 02331-8046-4196",
       "etage": "4 OG",
       "plaetze": "12",
+      "description": "* 10. Juli 1856 in Smiljan\r\n† 7. Januar 1943 in New York\r\nPionier der ELektrotechnik, Erfinder des Wechselstroms",
       "ausstattung": [
         "typ_flipchart",
         "typ_whiteboard",
@@ -68,6 +71,7 @@ Response-Delay: 100
       "tel": "Spinne: 02331-8046-4197",
       "etage": "3 OG",
       "plaetze": "10",
+      "description": "* 10. Dezember 1815 in London\r\n† 27. November 1852 ebenda\r\nsie schrieb 1843 das Computerprogramm der Welt",
       "ausstattung": [
         "typ_flipchart",
         "typ_polycom",
@@ -86,6 +90,7 @@ Response-Delay: 100
       "Telefon (02331-8046-)": "Spinne: 030 - 6677302-57",
       "etage": "3 OG",
       "plaetze": "4",
+      "description": "* 23. Juni 1912 in London\r\n† 7. Juni 1954 in Wilmslow\r\nDie Turingmaschine begründet die Theoretische Informatik",
       "ausstattung": [
         "typ_desktop",
         "typ_beamer"
@@ -102,6 +107,7 @@ Response-Delay: 100
       "tel": "Spinne: 02331-8046-4198",
       "etage": "4 OG",
       "plaetze": "4",
+      "description": "* 9. November 1914 in Wien\r\n† 19.01.2000 in Altamonte Springs\r\nEntwickelte das Frequenzsprungverfahren",
       "ausstattung": [
         "typ_tv",
         "typ_camera",
@@ -120,6 +126,7 @@ Response-Delay: 100
       "room": "Grace Hopper",
       "etage": "4 OG",
       "plaetze": "6",
+      "description": "* 9. Dezember in New York\r\n† 1. Januar 1992 in Arlington\r\nentwickelte 1952 den ersten funktionierenden Compiler",
       "ausstattung": [
         "typ_desktop",
         "typ_whiteboard"
