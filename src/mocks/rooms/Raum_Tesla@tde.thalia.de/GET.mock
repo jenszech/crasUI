@@ -1,0 +1,27 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+Response-Delay: 100
+
+{
+  "roomName": "Nicola Tesla",
+  "appointments": [
+    {
+      "startTime": "2020-03-07T13:00:00.000Z",
+      "endTime": "2020-03-07T22:00:00.000Z",
+      "displayTime": "13:00 bis 22:00",
+      "user": "Ernst, Thomas",
+      "title": "Thalino",
+      "blocked": true,
+      "isCurrent": false
+    },
+    {
+      "startTime": "2020-03-07T22:00:00.000Z",
+      "endTime": "2020-03-07T23:00:00.000Z",
+      "displayTime": "22:00 bis 23:00",
+      "title": "Frei",
+      "blocked": false,
+      "isCurrent": true
+    }
+  ]
+}

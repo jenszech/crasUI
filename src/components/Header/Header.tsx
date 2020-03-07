@@ -33,7 +33,7 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink href="/">Home</NavLink>
                             </NavItem>
-
+                            {/*
                             <NavItem>
                                 <NavLink href="/overview">Raum</NavLink>
                             </NavItem>
@@ -41,6 +41,7 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink href="/detail">Termine</NavLink>
                             </NavItem>
+                            */}
                         </Nav>
                     </Collapse>
                 </Navbar>

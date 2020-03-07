@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+Response-Delay: 100
+
+{
+  "roomName": "Marie Curie",
+  "appointments": [
+      {
+      "startTime": "2020-03-07T13:30:00.000Z",
+      "endTime": "2020-03-07T20:00:00.000Z",
+      "displayTime": "09:00 bis 23:00",
+      "title": "Frei",
+      "blocked": false,
+      "isCurrent": true
+    }
+  ]
+}
