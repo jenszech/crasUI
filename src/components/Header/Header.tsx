@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import {
     Navbar, Nav,
-    NavbarBrand, NavLink, NavItem, Collapse, NavbarToggler
+    NavbarBrand, NavLink, NavItem, Collapse, NavbarToggler, NavbarText
 } from 'reactstrap';
 import {Component} from "react";
 
 const AVATAR = './logo256.png';
+let version ="";
+if (process.env.REACT_APP_VERSION !== undefined) { version = "v"+process.env.REACT_APP_VERSION}
 
 class Header extends Component {
     state = {
@@ -29,7 +31,7 @@ class Header extends Component {
                     <NavbarBrand href="/" className="mr-auto">CRAS UI&nbsp;</NavbarBrand>
                     <NavbarToggler onClick={this.toggleNavbar} className="mr-2"/>
                     <Collapse isOpen={!this.state.collapsed} navbar>
-                        <Nav className="mrx-auto" navbar>
+                        <Nav className="mr-auto" navbar>
                             <NavItem>
                                 <NavLink href="/">Home</NavLink>
                             </NavItem>
@@ -43,6 +45,7 @@ class Header extends Component {
                             </NavItem>
                             */}
                         </Nav>
+                        <NavbarText>{version}</NavbarText>
                     </Collapse>
                 </Navbar>
             </div>

@@ -1,10 +1,12 @@
-import {environment} from '../environments/environment';
 
 export class DataService {
     public getRooms() {
-        return fetch(environment.apiURL + environment.roomsEndpoint)
+        let url = "http://localhost";
+        if ((process.env.REACT_APP_API !== undefined) && (process.env.REACT_APP_ENDPOINT_ROOM !==undefined)) {
+            url = process.env.REACT_APP_API + process.env.REACT_APP_ENDPOINT_ROOM;
+        }
+        return fetch(url)
             .then(response => {
-                console.log("Fetch: "+environment.apiURL + environment.roomsEndpoint);
                 const contentType = response.headers.get('content-type');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -17,9 +19,13 @@ export class DataService {
     }
 
     public getTasksByRooms(roomId:string) {
-        return fetch(environment.apiURL + environment.roomDetailEndpoint + roomId)
+        let url = "http://localhost";
+        if ((process.env.REACT_APP_API !== undefined) && (process.env.REACT_APP_ENDPOINT_ROOM !==undefined)) {
+            url = process.env.REACT_APP_API + process.env.REACT_APP_ENDPOINT_ROOM_DETAIL;
+        }
+        return fetch(url + roomId)
             .then(response => {
-                console.log("Fetch: "+environment.apiURL + environment.roomDetailEndpoint + roomId);
+                console.log("Fetch: "+url + roomId);
                 const contentType = response.headers.get('content-type');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
