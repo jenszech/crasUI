@@ -3,7 +3,6 @@ import { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import './RoomInfoPanel.scss';
 import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
-import MetaIcon from "../MetaIcon";
 import {Room} from "../../shared/models/Room";
 import history from "../../shared/history";
 import MetaIconDetail from "../MetaIconDetail/MetaIconDetail";

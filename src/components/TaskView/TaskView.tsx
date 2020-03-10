@@ -7,6 +7,7 @@ import {Booking} from "../../shared/models/Booking";
 import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
 import {Room} from "../../shared/models/Room";
 import history from "../../shared/history";
+import RoomNavigationButtons from "../RoomNavigationButtons/RoomNavigationButtons";
 
 class TaskView extends Component<ICustomRoomInfoProps> {
     state = {
@@ -101,16 +102,7 @@ render() {
                     {TaskView.taskEntrie(this.state.current)}
                     {TaskView.taskEntrie(this.state.next)}
                 </Container>
-                <Container className="button">
-                    <Row>
-                        <Col className="buttonLeft" onClick={() => this.showRoomMeta(this.props.room)}>
-                            &gt;&gt; Raum Informationen
-                        </Col>
-                        <Col className="buttonRight" onClick={() => this.showTaskList(this.props.room)}>
-                            &gt;&gt; Alle Termine
-                        </Col>
-                    </Row>
-                </Container>
+                <RoomNavigationButtons page="detail" room={this.props.room}/>
             </Fragment>
         );
     }

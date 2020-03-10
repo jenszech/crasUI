@@ -9,6 +9,7 @@ import {Component} from "react";
 import {Booking} from "../../shared/models/Booking";
 import {TaskService} from "../../shared/taskService";
 import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
+import RoomNavigationButtons from "../RoomNavigationButtons/RoomNavigationButtons";
 
 class TaskList extends Component<ICustomRoomInfoProps> {
     state = {appointments: new Array<Booking>() };
@@ -67,6 +68,7 @@ class TaskList extends Component<ICustomRoomInfoProps> {
                             </Col>
                         </Row>
                     ))}
+                    <RoomNavigationButtons page="tasklist" room={this.props.room}/>
                 </Container>
             </Fragment>
         );

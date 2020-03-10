@@ -2,7 +2,6 @@
 import * as React from 'react';
 import {Component, Fragment} from 'react';
 
-import {UncontrolledTooltip,} from 'reactstrap';
 import './MetaIconDetail.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {ICustomIconProps} from "../../shared/interface/ICustomIconProps";

@@ -41,32 +41,6 @@
   color: #FFFFFF;
 }
 
-.button .row {
-  margin-left: 10px;
-  margin-bottom: 25px;
-}
-.button .col {
-  background: #EEEEEE;
-  padding: 20px;
-}
-.button .buttonLeft {
-  margin-right: 10px;
-  cursor: pointer;
-  color: #765D69;
-}
-.button .buttonRight {
-  margin-left: 10px;
-  cursor: pointer;
-  color: #765D69;
-}
-.button .col:hover {
-  background-color: #765D69;
-  color: #FFFFFF;
-}
-.button .col:hover .col {
-  color: #FFFFFF;
-}
-
 .progress {
   background-color: #cbb2be;
   margin-left: 10px;
