@@ -1,0 +1,12 @@
+.metainfo-detail {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-column: 2;
+}
+
+.metainfo-detail .icon {
+  text-align: center;
+}
+
+.metainfo-detail .icon-desc {
+}

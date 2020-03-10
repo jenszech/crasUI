@@ -6,6 +6,7 @@ import Header from './components/Header';
 import RoomOverview from './page/RoomOverview';
 import RoomList from './page/RoomList';
 import RoomDetail from './page/RoomDetail';
+import RoomInfo from './page/RoomInfo';
 
 import history from './shared/history';
 
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/" component={RoomList} exact/>
                         <Route path="/overview" component={RoomOverview}/>
                         <Route path="/detail" component={RoomDetail}/>
+                        <Route path="/info" component={RoomInfo}/>
                     </Switch>
                 </main>
             </Router>

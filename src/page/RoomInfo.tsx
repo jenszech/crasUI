@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {Col, Container, Row} from "reactstrap";
 import SideCard from "../components/SideCard";
-import TaskView from "../components/TaskView";
 import {Component} from "react";
 import { RouteComponentProps } from 'react-router';
 import { ICustomRoomInfoProps} from "../shared/interface/ICustomRoomInfoProps";
+import RoomInfoPanel from "../components/RoomInfoPanel/RoomInfoPanel";
+import RoomNavigationButtons from "../components/RoomNavigationButtons/RoomNavigationButtons";
 
 
 class roomOverview extends Component<RouteComponentProps> {
@@ -30,9 +31,9 @@ class roomOverview extends Component<RouteComponentProps> {
                     </Col>
 
                     <Col xs={{order: 1}} md={{size: 7, offset: 1}} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">
-                        <TaskView room={this.state.room}/>
+                        <RoomInfoPanel room={this.state.room}/>
+                        <RoomNavigationButtons page="info" room={this.state.room}/>
                     </Col>
-
                 </Row>
             </Container>
         );

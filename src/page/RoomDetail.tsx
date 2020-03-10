@@ -3,10 +3,10 @@ import {Container} from "reactstrap";
 import TaskList from "../components/TaskList";
 import {Component} from "react";
 import {RouteComponentProps} from "react-router";
-import {CustomRoomInfoProps} from "../shared/interface/CustomRoomInfoProps";
+import {ICustomRoomInfoProps} from "../shared/interface/ICustomRoomInfoProps";
 
 class roomDetail extends Component<RouteComponentProps> {
-    state = {room: (this.props.location.state as CustomRoomInfoProps).room};
+    state = {room: (this.props.location.state as ICustomRoomInfoProps).room};
 
     constructor(props: Readonly<RouteComponentProps>) {
         super(props);

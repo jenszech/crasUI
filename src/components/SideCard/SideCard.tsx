@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Fragment} from 'react';
-import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
+import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
 
 import {
     Container, Row, Col,
@@ -10,7 +10,7 @@ import {Component} from "react";
 
 const BANNER_PATH = './roomImages/';
 
-class SideCard extends Component<CustomRoomInfoProps> {
+class SideCard extends Component<ICustomRoomInfoProps> {
     private date = new Date();
 
     getFormatTime(date: Date): string {

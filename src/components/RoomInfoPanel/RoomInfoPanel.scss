@@ -1,0 +1,26 @@
+.roomInfoPanel {
+  font-family: Oswald, sans-serif;
+  font-weight: 200;
+  color: #765D69;
+  text-align: left;
+}
+
+.roomInfoPanel .row {
+  margin-left: 10px;
+  border: #cbb2be;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.roomInfoPanel .row  .title{
+  background: #EEEEEE;
+  padding: 20px;
+  padding-left: 10px;
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+.roomInfoPanel .row  .info{
+  padding: 20px;
+  background: #FFFFFF;
+  font-size: 1.25rem;
+}

@@ -4,18 +4,18 @@ import { Row, Col, Container, Progress } from 'reactstrap';
 import './TaskView.scss';
 import {TaskService} from "../../shared/taskService";
 import {Booking} from "../../shared/models/Booking";
-import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
+import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
 import {Room} from "../../shared/models/Room";
 import history from "../../shared/history";
 
-class TaskView extends Component<CustomRoomInfoProps> {
+class TaskView extends Component<ICustomRoomInfoProps> {
     state = {
         current: new Booking(),
         next: new Booking()
     };
     private taskService = new TaskService();
 
-    constructor(props: Readonly<CustomRoomInfoProps>) {
+    constructor(props: Readonly<ICustomRoomInfoProps>) {
         super(props);
         this.showTaskList = this.showTaskList.bind(this);
         this.showRoomMeta = this.showRoomMeta.bind(this);
@@ -24,7 +24,7 @@ class TaskView extends Component<CustomRoomInfoProps> {
     componentDidMount() {
         //this.setState({post: response.data}));
         this.taskService.loadTasks(this.props.room.id, this.updateUi);
-        console.log("Fetch TaskView final: "+this.props.room.id);
+        console.log("Fetch RoomInfoPanel final: "+this.props.room.id);
     }
 
     private updateUi = (): void => {
@@ -43,16 +43,12 @@ class TaskView extends Component<CustomRoomInfoProps> {
         })
     }
     public showRoomMeta(room : Room) {
-        //ToDo Implemtierungen einer eigenen Detailansicht
-        return (
-          alert(
-              "Raum: "+room.meta.room+"\n" +
-              "Etage: "+room.meta.etage+"\n" +
-              "Plaetze: "+room.meta.plaetze+"\n" +
-              "Telefon: "+room.meta.tel+"\n" +
-              ""
-          )
-        );
+        console.log("Open RoomInfo: "+room.id);
+        history.push({
+            pathname: '/info',
+            search: '',
+            state: { room: room }
+        })
     }
 
    private static getFormatTime(date: Date): string {

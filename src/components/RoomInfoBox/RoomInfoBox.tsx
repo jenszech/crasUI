@@ -9,11 +9,11 @@ import './RoomInfoBox.scss';
 import {Component} from "react";
 import {Room} from "../../shared/models/Room";
 import MetaIcon from "../MetaIcon";
-import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
+import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
 import history from '../../shared/history';
 
-class RoomInfoBox extends Component<CustomRoomInfoProps> {
-    constructor(props: Readonly<CustomRoomInfoProps>) {
+class RoomInfoBox extends Component<ICustomRoomInfoProps> {
+    constructor(props: Readonly<ICustomRoomInfoProps>) {
         super(props);
         this.openRoom = this.openRoom.bind(this);
     }

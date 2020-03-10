@@ -52,13 +52,16 @@
 .button .buttonLeft {
   margin-right: 10px;
   cursor: pointer;
+  color: #765D69;
 }
 .button .buttonRight {
   margin-left: 10px;
   cursor: pointer;
+  color: #765D69;
 }
 .button .col:hover {
   background-color: #765D69;
+  color: #FFFFFF;
 }
 .button .col:hover .col {
   color: #FFFFFF;

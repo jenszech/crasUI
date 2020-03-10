@@ -18,6 +18,10 @@ Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
 * Bessere Raum Detailinformation (Telefon, etc.)
 * Tagesübersicht über alle Räume hinweg
 * Legende für die Eigenschaften
+* TopListen
+** Am häugisten gebuchte Räume
+** Nutzer die am häufigsten Termine überziehen
+** Nutzung der spontan Buchung
  
    
 Für geplante Features und Änderungen siehe [CHANGELOG.md](CHANGELOG.md)
@@ -45,17 +49,17 @@ npm install
 #### Einrichten als Hintergrundprocess
 Einrichten als Process mit Autostart und start des http Server
 
-DEPRECATED UPDATE FOLGT
 ```
+npm build
 sudo npm install pm2@latest -g
-pm2 start angular-http-server --name crasFrontend -- -p 8080 --path release/kras/
+pm2 serve build 5000 --name "crasUI"
 pm2 startup systemd
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u pi --hp /home/pi
 pm2 list
 ```
 
 ### Betrieb
-Das WebInterface: http://<YOUR IP>:8080
+Das WebInterface: http://<YOUR IP>:5000
 
 #### Server Status abfragen
 ```
@@ -64,14 +68,14 @@ pm2 list
 
 #### Server neustarten
 ```
-pm2 restart crasFrontend
+pm2 restart crasUI
 ```
 
 #### Update der Projekt Software
 ```
-cd kras
+cd crasUI
 git pull
-pm2 restart crasFrontend
+pm2 restart crasUI
 ```
 
 ## Available Scripts
@@ -160,7 +164,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **julienP88** - *Initial work* - [GitHub Profil](https://github.com/julienP88)
 * **Anna Utlik** - *Main contributor* - [GitHub Profil](https://github.com/anna-utlik)
 
-See also the list of [contributors](https://github.com/julienP88/kras/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/jenszech/crasUI/contributors) who participated in this project.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

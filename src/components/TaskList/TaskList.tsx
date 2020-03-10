@@ -8,9 +8,9 @@ import './TaskList.scss';
 import {Component} from "react";
 import {Booking} from "../../shared/models/Booking";
 import {TaskService} from "../../shared/taskService";
-import { CustomRoomInfoProps} from "../../shared/interface/CustomRoomInfoProps";
+import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
 
-class TaskList extends Component<CustomRoomInfoProps> {
+class TaskList extends Component<ICustomRoomInfoProps> {
     state = {appointments: new Array<Booking>() };
     private taskService = new TaskService();
     private date = new Date();
