@@ -3,29 +3,48 @@ import {Fragment} from 'react';
 import {
     Container, Row, Col,
 } from 'reactstrap';
-import RoomInfoBox from '../RoomInfoBox';
 import './BookingSelection.scss';
 import {Component} from "react";
-import {RoomService} from "../../shared/roomService";
 import RoomNavigationButtons from "../RoomNavigationButtons/RoomNavigationButtons";
-import {ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
+import {ICustomRoomBookProps} from "../../shared/interface/ICustumRoomBookProps";
 import {Room} from "../../shared/models/Room";
-import {Booking} from "../../shared/models/Booking";
-
-export interface ICustomRoomBookProps {
-    room: Room;
-    appointment: Booking;
-}
+import {TaskService} from "../../shared/taskService";
 
 class BookingSelection extends Component<ICustomRoomBookProps> {
+    private taskService = new TaskService();
     durations = [15, 30, 45, 60, 75, 90, 105, 120];
     maxDurations: Array<number> = [] ;
+    date = new Date();
+    start = this.getStartTime(this.props.appointment.startTime);
+    room = this.props.room;
 
     constructor(props: Readonly<ICustomRoomBookProps>) {
         super(props);
         this.maxDurations = this.getMaxDuration(
             this.getStartTime(this.props.appointment.startTime), this.props.appointment.endTime
         );
+        this.doBooking = this.doBooking.bind(this);
+        this.showRoomDetail = this.showRoomDetail.bind(this);
+    }
+
+    public doBooking(room: Room, start: Date, duration: number) {
+        if (this.isBookable(duration)) {
+            console.log("Do Booking: " + room.id, duration, start);
+            this.taskService.storeTasks(room.id, start,duration, this.showRoomDetail);
+        }
+    }
+
+    public showRoomDetail() {
+        console.log("Open showRoomDetail: "+this.room.id);
+
+        /*history.push({
+            pathname: '/detail',
+            search: '',
+            state: {
+                room: room
+            }
+        })
+        */
     }
 
     render() {
@@ -34,14 +53,25 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
                 <Container className="book">
                     <Row className="bookRow">
                         <Col xs={{size: 1}}>Start</Col>
-                        <Col>{this.getFormatTime(this.getStartTime(this.props.appointment.startTime))} Uhr</Col>
+                        <Col>{this.getFormatTime(this.start)} Uhr</Col>
                     </Row>
                     <Row key="1" className="bookRow">
                         <Col xs={{size: 1}}>Dauer</Col>
                         <Col>
-                            {this.maxDurations.map((duration, index) => (
-                                <p className="title">{duration}</p>
-                            ))}
+                            <Container className="bookOptions">
+                            <Row xs="5">
+                                {this.durations.map((duration, index) => (
+                                    <Col key={index}
+                                         className={this.getOptionColClass(index, duration)}
+                                         onClick={() => this.doBooking(
+                                             this.props.room, this.start, duration)
+                                         }>
+                                        {duration}
+                                    </Col>
+                                ))}
+                            </Row>
+                            </Container>
+
                         </Col>
                     </Row>
                 </Container>
@@ -50,23 +80,32 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
         );
     }
 
+    private isBookable(duration:number):boolean {
+        return this.maxDurations.includes(duration);
+    }
+
+
     private getMaxDuration(start: Date, end: Date): Array<number> {
         let diff = (end.getTime() - start.getTime()) / 60000;
-        var max = this.durations.filter(e => e < diff);
+        var max = this.durations.filter(e => e <= diff);
         return max;
     }
 
-    private checkAdult(age:number) {
-        return age >= 18;
+    private getOptionColClass(index: number, duration:number) {
+        if (this.maxDurations.includes(duration)) {
+            return "enabled"
+        }
+        return "disabled";
     }
 
-    private getStartTime(date: Date): Date {
+
+    private getStartTime(start: Date): Date {
         const coeff = 1000 * 60 * 5;
-        let now = new Date(Math.round(new Date().getTime() / coeff) * coeff)
-        if (now > date) {
+        let now = new Date(Math.round(this.date.getTime() / coeff) * coeff)
+        if (now > start) {
             return now;
         }
-        return date;
+        return start;
     }
 
     private getFormatTime(date: Date): string {

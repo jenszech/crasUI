@@ -16,6 +16,15 @@ export class TaskService {
                 })
                 .catch((error) => console.error(error));
     }
+    public storeTasks(roomId:string, start: Date, duration:number, callbackFunction:() => void) {
+        console.log("Store Tasks");
+        this.dataService.putTasksByRooms(roomId, start, duration)
+            .then(result => {
+                console.log("Fetch Roomlist loaded: " + result.toString());
+                callbackFunction();
+            })
+            .catch((error) => console.error(error));
+    }
 
     private parseJson(result:RoomAgenda): RoomAgenda {
         let agenda = new RoomAgenda();

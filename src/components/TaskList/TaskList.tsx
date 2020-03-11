@@ -17,10 +17,15 @@ class TaskList extends Component<ICustomRoomInfoProps> {
     state = {appointments: new Array<Booking>() };
     private taskService = new TaskService();
     private date = new Date();
+    private timer:any;
 
     componentDidMount() {
         this.taskService.loadTasks(this.props.room.id,this.updateUi);
         console.log("Fetch Tasklist final: "+this.props.room.id );
+        this.timer = setInterval(this.showRoom, 60000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     private updateUi = (): void => {
@@ -29,8 +34,17 @@ class TaskList extends Component<ICustomRoomInfoProps> {
         });
     };
 
+    showRoom = () => {
+        console.log("Open Room: "+this.props.room.id);
+        history.push({
+            pathname: '/overview',
+            search: '',
+            state: { room: this.props.room }
+        })
+    };
+
     public showBookingSelection(room : Room, appointment: Booking) {
-        if (!appointment.blocked) {
+        if (this.isBookable(appointment)) {
             console.log("Open BookingSelection: " + room.id);
             history.push({
                 pathname: '/booking',
@@ -52,7 +66,7 @@ class TaskList extends Component<ICustomRoomInfoProps> {
                         <Col className="time">{this.getFormatDate(this.date)}<br/>{this.getFormatTime(this.date)} Uhr</Col>
                     </Row>
                     {this.state.appointments.map((appointment, index) => (
-                        <Row key={index} className={this.getRowClass(appointment.blocked)} onClick={() => this.showBookingSelection(this.props.room, appointment)}>
+                        <Row key={index} className={this.getRowClass(appointment)} onClick={() => this.showBookingSelection(this.props.room, appointment)}>
                             <Col xs={{size: 3}} className="time">{this.getFormatTime(appointment.startTime)} - {this.getFormatTime(appointment.endTime)}</Col>
                             <Col>
                                 <p className="title">{appointment.title}</p>
@@ -64,6 +78,10 @@ class TaskList extends Component<ICustomRoomInfoProps> {
                 </Container>
             </Fragment>
         );
+    }
+
+    private isBookable(appointment:Booking):boolean {
+        return ((!appointment.blocked) &&  (this.date.getTime() < appointment.endTime.getTime()))
     }
 
     private getFormatTime(date: Date): string {
@@ -83,11 +101,13 @@ class TaskList extends Component<ICustomRoomInfoProps> {
         return (new Intl.DateTimeFormat('de-DE', options).format(date));
     }
 
-    private getRowClass(isBlocked :boolean):string {
-        if (isBlocked) {
+    private getRowClass(appointment:Booking):string {
+        if (appointment.blocked) {
             return "taskRow";
+        } else if (this.date.getTime() > appointment.endTime.getTime()) {
+            return "taskRow free";
         }
-        return "taskRow free";
+        return "taskRow free clickable";
     }
 }
 // noinspection JSUnusedGlobalSymbols

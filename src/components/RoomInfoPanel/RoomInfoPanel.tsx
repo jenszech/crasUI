@@ -3,29 +3,27 @@ import { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import './RoomInfoPanel.scss';
 import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
-import {Room} from "../../shared/models/Room";
 import history from "../../shared/history";
 import MetaIconDetail from "../MetaIconDetail/MetaIconDetail";
 
 class RoomInfoPanel extends Component<ICustomRoomInfoProps> {
+    private timer:any;
 
+    componentDidMount() {
+        this.timer = setInterval(this.showRoom, 60000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
 
-    public showRoom(room : Room) {
-        console.log("Open Room: "+room.id);
+    showRoom = () => {
+        console.log("Open Room: "+this.props.room.id);
         history.push({
             pathname: '/overview',
             search: '',
-            state: { room: room }
+            state: { room: this.props.room }
         })
-    }
-    public showTaskList(room : Room) {
-        console.log("Open Room: "+room.id);
-        history.push({
-            pathname: '/detail',
-            search: '',
-            state: { room: room }
-        })
-    }
+    };
 
 render() {
         return (

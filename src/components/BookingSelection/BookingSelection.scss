@@ -5,18 +5,35 @@
 }
 
 .book .bookRow{
+  font-size: 1.5rem;
+  //font-weight: bold;
   border-bottom: #cbb2be;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   padding: 10px;
 }
 
+.bookOptions {
 
-.book .header{
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-bottom: #cbb2be;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  padding: 10px;
+}
+
+.bookOptions .col{
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+}
+
+.bookOptions .enabled{
+  background: #EEEEEE;
+  cursor: pointer;
+}
+
+.bookOptions .disabled{
+  background: #f8f8f8;
+  color: #DDDDDD;
+}
+
+.bookOptions .enabled:hover {
+  background-color: #765D69;
+  color: #FFFFFF;
 }
