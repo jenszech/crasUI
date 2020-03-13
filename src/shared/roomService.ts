@@ -1,7 +1,5 @@
 import {DataService} from "./dataService";
 import {Room} from './models/Room';
-//import {AusstattungType} from './models/AusstattungType';
-
 
 export class RoomService {
     private roomsByFloor: Map<string, Array<Room>> = new Map<string, Array<Room>>();
@@ -9,16 +7,16 @@ export class RoomService {
 
     public loadRooms(callbackFunction:() => void) {
         if (this.roomsByFloor.size === 0) {
-            console.log("Fetch Rooms");
+            console.log("RoomService.loadRooms");
              this.dataService.getRooms()
                 .then(result => {
                     this.roomsByFloor = this.parseJson(result);
-                    console.log("Fetch Roomlist loaded: " + this.roomsByFloor);
+                    console.log("RoomService.loadRooms - loading completed: " + this.roomsByFloor);
                     callbackFunction();
                 })
                 .catch((error) => console.error(error));
         } else {
-            console.log("Rooms already loaded")
+            console.log("RoomService.loadRooms - Rooms already loaded")
         }
     }
 

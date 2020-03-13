@@ -3,26 +3,23 @@ import { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import './RoomInfoPanel.scss';
 import { ICustomRoomInfoProps} from "../../shared/interface/ICustomRoomInfoProps";
-import history from "../../shared/history";
 import MetaIconDetail from "../MetaIconDetail/MetaIconDetail";
+import {RoutingHelper} from "../../shared/utils/RoutingHelper";
+
+const REDIRECT_TO_DETAILPAGE_TIME = 1 * 60 * 1000;
 
 class RoomInfoPanel extends Component<ICustomRoomInfoProps> {
     private timer:any;
 
     componentDidMount() {
-        this.timer = setInterval(this.showRoom, 60000);
+        this.timer = setInterval(this.redirectToRoomDetail, REDIRECT_TO_DETAILPAGE_TIME);
     }
     componentWillUnmount() {
         clearInterval(this.timer);
     }
 
-    showRoom = () => {
-        console.log("Open Room: "+this.props.room.id);
-        history.push({
-            pathname: '/overview',
-            search: '',
-            state: { room: this.props.room }
-        })
+    redirectToRoomDetail = () => {
+        RoutingHelper.showRoomOverview(this.props.room);
     };
 
 render() {

@@ -25,7 +25,7 @@ export class DataService {
         }
         return fetch(url + roomId)
             .then(response => {
-                console.log("Fetch: "+url + roomId);
+                console.log("DataService.getTasksByRooms - load: "+url + roomId);
                 const contentType = response.headers.get('content-type');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -48,7 +48,7 @@ export class DataService {
         return fetch(url + roomId, {
             method: 'PUT'
         }).then(response => {
-                console.log("Store: "+url + roomId);
+                console.log("DataService.putTasksByRooms - store: "+url + roomId);
                 const contentType = response.headers.get('content-type');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

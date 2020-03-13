@@ -1,10 +1,11 @@
 {
   "name": "crasUI",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "mock backend": "mockserver -p 3001 -m src/mocks",
     "start": "PORT=8000 react-scripts start",
+    "start local": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

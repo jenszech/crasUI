@@ -1,12 +1,10 @@
-/* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 import * as React from 'react';
 import {Component, Fragment} from 'react';
-
 import {UncontrolledTooltip,} from 'reactstrap';
 import './MetaIcon.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {ICustomIconProps} from "../../shared/interface/ICustomIconProps";
-import {MetaIconHelper} from "../../shared/MetaIconHelper";
+import {MetaIconHelper} from "../../shared/utils/MetaIconHelper";
 
 class MetaIcon extends Component<ICustomIconProps> {
     render() {

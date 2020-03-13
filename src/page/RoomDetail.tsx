@@ -10,11 +10,7 @@ class roomDetail extends Component<RouteComponentProps> {
 
     constructor(props: Readonly<RouteComponentProps>) {
         super(props);
-        console.log("constructor - roomOverview => " + this.state.room.id);
-    }
-
-    componentDidMount() {
-        //console.log("componmentDidMount - roomOverview => "+ this);
+        console.log("RoomDetail.constructor - room => "+ this.state.room.id);
     }
 
     render() {

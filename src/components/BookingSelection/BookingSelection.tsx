@@ -9,6 +9,8 @@ import RoomNavigationButtons from "../RoomNavigationButtons/RoomNavigationButton
 import {ICustomRoomBookProps} from "../../shared/interface/ICustumRoomBookProps";
 import {Room} from "../../shared/models/Room";
 import {TaskService} from "../../shared/taskService";
+import {FormatUtils} from "../../shared/utils/FormatUtils";
+import {RoutingHelper} from "../../shared/utils/RoutingHelper";
 
 class BookingSelection extends Component<ICustomRoomBookProps> {
     private taskService = new TaskService();
@@ -23,28 +25,18 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
         this.maxDurations = this.getMaxDuration(
             this.getStartTime(this.props.appointment.startTime), this.props.appointment.endTime
         );
-        this.doBooking = this.doBooking.bind(this);
-        this.showRoomDetail = this.showRoomDetail.bind(this);
     }
 
-    public doBooking(room: Room, start: Date, duration: number) {
+    doBooking = (room: Room, start: Date, duration: number) => {
         if (this.isBookable(duration)) {
-            console.log("Do Booking: " + room.id, duration, start);
-            this.taskService.storeTasks(room.id, start,duration, this.showRoomDetail);
+            console.log("BookingSelection.doBooking - book: " + room.id, duration, start);
+            this.taskService.storeTasks(room.id, start,duration, this.bookingDone);
         }
     }
 
-    public showRoomDetail() {
-        console.log("Open showRoomDetail: "+this.room.id);
-
-        /*history.push({
-            pathname: '/detail',
-            search: '',
-            state: {
-                room: room
-            }
-        })
-        */
+    bookingDone = () => {
+        console.log("BookingSelection.bookingDone - room: " +this.room.id);
+        RoutingHelper.showRoomOverview(this.room);
     }
 
     render() {
@@ -52,8 +44,12 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
             <Fragment>
                 <Container className="book">
                     <Row className="bookRow">
+                        <Col xs={{size: 1}}>Raum</Col>
+                        <Col>{this.room.meta.room}</Col>
+                    </Row>
+                    <Row className="bookRow">
                         <Col xs={{size: 1}}>Start</Col>
-                        <Col>{this.getFormatTime(this.start)} Uhr</Col>
+                        <Col>{FormatUtils.getFormatTimeHHMM(this.start)} Uhr</Col>
                     </Row>
                     <Row key="1" className="bookRow">
                         <Col xs={{size: 1}}>Dauer</Col>
@@ -84,7 +80,6 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
         return this.maxDurations.includes(duration);
     }
 
-
     private getMaxDuration(start: Date, end: Date): Array<number> {
         let diff = (end.getTime() - start.getTime()) / 60000;
         var max = this.durations.filter(e => e <= diff);
@@ -98,7 +93,6 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
         return "disabled";
     }
 
-
     private getStartTime(start: Date): Date {
         const coeff = 1000 * 60 * 5;
         let now = new Date(Math.round(this.date.getTime() / coeff) * coeff)
@@ -106,15 +100,6 @@ class BookingSelection extends Component<ICustomRoomBookProps> {
             return now;
         }
         return start;
-    }
-
-    private getFormatTime(date: Date): string {
-        const options = {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-        };
-        return (new Intl.DateTimeFormat('de-DE', options).format(date));
     }
 }
 // noinspection JSUnusedGlobalSymbols

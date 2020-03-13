@@ -5,6 +5,11 @@ import {Component} from "react";
 import {RouteComponentProps} from "react-router";
 
 class RoomList extends Component<RouteComponentProps> {
+    constructor(props: Readonly<RouteComponentProps>) {
+        super(props);
+        console.log("RoomOverview.constructor");
+    }
+
     render() {
         return (
             <Container>

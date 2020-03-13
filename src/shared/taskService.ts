@@ -7,20 +7,20 @@ export class TaskService {
     private dataService = new DataService();
 
     public loadTasks(roomId:string, callbackFunction:() => void) {
-            console.log("Fetch Tasks");
+            console.log("TaskService.loadTasks");
              this.dataService.getTasksByRooms(roomId)
                 .then(result => {
                     this.roomAgenda = this.parseJson(result);
-                    console.log("Fetch Roomlist loaded: " + this.roomAgenda.roomName);
+                    console.log("TaskService.loadTask - loading completed: " + this.roomAgenda.roomName);
                     callbackFunction();
                 })
                 .catch((error) => console.error(error));
     }
     public storeTasks(roomId:string, start: Date, duration:number, callbackFunction:() => void) {
-        console.log("Store Tasks");
+        console.log("TaskService.storeTasks");
         this.dataService.putTasksByRooms(roomId, start, duration)
             .then(result => {
-                console.log("Fetch Roomlist loaded: " + result.toString());
+                console.log("TaskService.storeTask - completed " + result.toString());
                 callbackFunction();
             })
             .catch((error) => console.error(error));
@@ -63,7 +63,7 @@ export class TaskService {
             return new Booking();
         }
         const next = this.roomAgenda.appointments.filter(this.isNow);
-        console.log('Load NowAppointment - Count: ' + this.roomAgenda.appointments.length + ' -> ' + next.length);
+        console.log('TaskService.getCurrentAppointment - Load NowAppointment - Count: ' + this.roomAgenda.appointments.length + ' -> ' + next.length);
         if (next.length > 0) {
             return next[0];
         }
@@ -75,7 +75,7 @@ export class TaskService {
             return new Booking();
         }
         const next = this.roomAgenda.appointments.filter(this.isNext);
-        console.log('Load NexAppointment - Count: ' + this.roomAgenda.appointments.length + ' -> ' + next.length);
+        console.log('TaskService.getNextAppointment - Load NexAppointment - Count: ' + this.roomAgenda.appointments.length + ' -> ' + next.length);
         if (next.length > 0) {
             return next[0];
         }

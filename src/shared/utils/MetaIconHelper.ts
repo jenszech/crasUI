@@ -15,7 +15,7 @@ import {
     faQuestionCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { IconName } from '@fortawesome/fontawesome-svg-core'
-import {AusstattungType} from "./models/AusstattungType";
+import {AusstattungType} from "../models/AusstattungType";
 
 library.add(faCheckSquare, faAppleAlt, faThumbtack, faStop, faVideo, faMicrophone, faClipboardList,
     faChalkboard, faTv, faHdd, faPhone, faPencilAlt, faQuestionCircle);

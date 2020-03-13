@@ -12,8 +12,16 @@ if (process.env.REACT_APP_VERSION !== undefined) { version = "v"+process.env.REA
 
 class Header extends Component {
     state = {
-        collapsed: false
+        collapsed: false,
     };
+
+    constructor(props:any) {
+        super(props);
+        console.log("Header.constructor");
+    }
+    componentDidMount() {
+        console.log("Header.componentDidMount");
+    }
 
     private toggleNavbar = (): void => {
         this.setState({

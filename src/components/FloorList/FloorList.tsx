@@ -13,8 +13,8 @@ class FloorList extends Component {
     private roomsService = new RoomService();
 
     componentDidMount() {
+        console.log("FloorList.componentDidMount");
         this.roomsService.loadRooms(this.updateUi);
-        console.log("Fetch Roomlist final 2: ");
     }
 
     private updateUi = (): void => {
@@ -43,7 +43,6 @@ class FloorList extends Component {
                                         ))}
                                     </Row>
                                 </Container>
-
                             </Col>
                         </Row>
                     ))}

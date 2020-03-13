@@ -12,27 +12,20 @@ class roomOverview extends Component<RouteComponentProps> {
 
     constructor(props: Readonly<RouteComponentProps>) {
         super(props);
-        console.log("constructor - roomOverview => "+ this.state.room.id);
-    }
-
-    componentDidMount() {
-        //console.log("componmentDidMount - roomOverview => "+ this);
+        console.log("RoomOverview.constructor - Room: "+ this.state.room.id);
     }
 
     render() {
         return (
             <Container>
                 <Row noGutters className="pt-md-3">
-
                     <Col xs={{order: 2}} md={{size: 3, order: 1}} tag="aside"
                          className="pb-5 mb-5 pb-md-0 mb-md-0 mx-auto mx-md-0">
                         <SideCard room={this.state.room}/>
                     </Col>
-
                     <Col xs={{order: 1}} md={{size: 7, offset: 1}} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">
                         <TaskView room={this.state.room}/>
                     </Col>
-
                 </Row>
             </Container>
         );

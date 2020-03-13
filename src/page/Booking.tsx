@@ -11,6 +11,11 @@ class Booking extends Component<RouteComponentProps> {
         appointment: (this.props.location.state as ICustomRoomBookProps).appointment
     };
 
+    constructor(props: Readonly<RouteComponentProps>) {
+        super(props);
+        console.log("Booking.constructor - room => "+ this.state.room.id);
+    }
+
     render() {
         return (
             <Container>
