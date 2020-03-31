@@ -39,6 +39,10 @@ render() {
                         <Col className="info" xs={{size: 7}}>{this.props.room.meta.tel}</Col>
                     </Row>
                     <Row xs="2">
+                        <Col className="title" xs={{size: 3}}>Link</Col>
+                        <Col className="info" xs={{size: 7}}><a href={this.props.room.meta.link}>{this.props.room.meta.link}</a></Col>
+                    </Row>
+                    <Row xs="2">
                         <Col className="title" xs={{size: 3}}>Ausstattung</Col>
                         <Col className="info">
                             {this.props.room.meta.ausstattung?.map(ausstattung => (
