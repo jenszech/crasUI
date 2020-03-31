@@ -1,6 +1,6 @@
 {
   "name": "crasUI",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "scripts": {
     "mock backend": "mockserver -p 3001 -m src/mocks",
