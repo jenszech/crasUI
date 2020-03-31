@@ -5,6 +5,7 @@ export class RoomMetaInfo {
     name: string = "";
     room: string = "";
     tel: string = "";
+    link: string = "";
     etage: string = "";
     plaetze: number = 0;
     description: string ="";
