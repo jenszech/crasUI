@@ -1,10 +1,9 @@
-# crasUI 
+# CRAS UI - <ins>C</ins>onference <ins>R</ins>oom <ins>A</ins>ssisting <ins>S</ins>ystem
 
-Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
-* **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
-* **[cras](https://github.com/jenszech/cras)** - stellt das benötigte Backend bereit
-* Optional **[crasBadgeIt](https://github.com/jenszech/crasBadgeIt)** - Ein microcontroller projekt for small ePaper devices
-* Optional **[crasAndroidViewer](https://github.com/jenszech/crasAndroidViewer)** - Eine Android App mit einem einfachem fullscreen Webviewer
+[![Release](https://img.shields.io/github/release/jenszech/crasui.svg)](https://github.com/hobbyquaker/crasUI/releases/latest)
+[![Issues](https://img.shields.io/github/issues/jenszech/crasui.svg)](https://github.com/jzech/crasUI/issues)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 
 ## Features
 
@@ -13,18 +12,32 @@ Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
 
 ### Roadmap
 
-* Spontane Schnellbuchung eines Raums
-* Filtern/Suchen der Räume nach bestimmten Eigenschaften
-* Bessere Raum Detailinformation (Telefon, etc.)
-* Tagesübersicht über alle Räume hinweg
-* Legende für die Eigenschaften
-* TopListen
-** Am häugisten gebuchte Räume
-** Nutzer die am häufigsten Termine überziehen
-** Nutzung der spontan Buchung
- 
-   
+* CRAS auch ohne VPN erreichbar machen
+    * Die Schnittstellen mit einem Auth verfahren und Token absichern
+    * Speicherung und verwaltung der Tokens damit nicht täglich ein erneutes Login nötig ist
+* Das Frontend mit einem Login und User erweitern
+    * Cookie & Session Handling
+* Weitere Features
+    * Buchen eines Raumes unter eigenem Namen direkt aus CRAS
+    * Anzeige auf der Raumübersicht ob der Raum aktuell frei ist
+    * Tagesübersicht über alle Räume hinweg
+    * Filtern/Suchen der Räume nach bestimmten Eigenschaften
+    * Bessere Raum Detailinformation (Telefon, etc.)
+    * Legende für die Eigenschaften
+    * TopListen
+        * Am häugisten gebuchte Räume
+        * Nutzer die am häufigsten Termine überziehen
+        * Nutzung der spontan Buchung
+  
 Für geplante Features und Änderungen siehe [CHANGELOG.md](CHANGELOG.md)
+
+### Teilprojekte
+Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
+* **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
+* **[cras](https://github.com/jenszech/cras)** - stellt das benötigte Backend bereit
+* Optional **[crasBadgeIt](https://github.com/jenszech/crasBadgeIt)** - Ein microcontroller projekt for small ePaper devices
+* Optional **[crasAndroidViewer](https://github.com/jenszech/crasAndroidViewer)** - Eine Android App mit einem einfachem fullscreen Webviewer
+
      
 ## Getting Started
 
