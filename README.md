@@ -1,7 +1,7 @@
 # CRAS UI - <ins>C</ins>onference <ins>R</ins>oom <ins>A</ins>ssisting <ins>S</ins>ystem
 
-[![Release](https://img.shields.io/github/release/jenszech/crasui.svg)](https://github.com/hobbyquaker/crasUI/releases/latest)
-[![Issues](https://img.shields.io/github/issues/jenszech/crasui.svg)](https://github.com/jzech/crasUI/issues)
+[![Release](https://img.shields.io/github/release/jenszech/crasui.svg)](https://github.com/jenszech/crasui/releases/latest)
+[![Issues](https://img.shields.io/github/issues/jenszech/crasui.svg)](https://github.com/jenszech/crasui/issues)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 
