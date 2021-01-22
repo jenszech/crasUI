@@ -8,10 +8,9 @@ export default class RoomService {
   public loadRooms(callbackFunction: () => void): void {
     if (this.roomsByFloor.size === 0) {
       console.log('RoomService.loadRooms');
-      this.dataService
-        .getRooms()
+      DataService.getRooms()
         .then((result) => {
-          this.roomsByFloor = this.parseJson(result);
+          this.roomsByFloor = RoomService.parseJson(result);
           console.log(`RoomService.loadRooms - loading completed: ${this.roomsByFloor}`);
           callbackFunction();
         })
@@ -21,7 +20,7 @@ export default class RoomService {
     }
   }
 
-  private parseJson(result: any): Map<string, Array<Room>> {
+  private static parseJson(result: any): Map<string, Array<Room>> {
     const roomsByFloor = new Map<string, Array<Room>>();
     result.forEach((room: Room) => {
       const key = room.meta.etage;

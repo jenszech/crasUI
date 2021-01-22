@@ -50,7 +50,7 @@ class BookingSelection extends React.Component<ICustomRoomBookProps> {
   doBooking = (room: Room, start: Date, duration: number): void => {
     if (this.isBookable(duration)) {
       console.log('BookingSelection.doBooking - book: ', room.id, duration, start);
-      this.taskService.storeTasks(room.id, start, duration, this.bookingDone);
+      TaskService.storeTasks(room.id, start, duration, this.bookingDone);
     }
   };
 

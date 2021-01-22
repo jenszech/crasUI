@@ -23,12 +23,14 @@ class Header extends Component {
   }
 
   private toggleNavbar = (): void => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !collapsed,
     });
   };
 
   render(): JSX.Element {
+    const { collapsed } = this.state;
     return (
       <div>
         <Navbar color="dark" dark expand="xs" style={{ height: 80 }}>
@@ -37,7 +39,7 @@ class Header extends Component {
             CRAS UI&nbsp;
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
+          <Collapse isOpen={!collapsed} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <NavLink href="/">Home</NavLink>

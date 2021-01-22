@@ -10,9 +10,11 @@ class SideCard extends React.Component<ICustomRoomInfoProps> {
   private date = new Date();
 
   getImagePath(): string {
-    return `${BANNER_PATH}${this.props.room.id}.jpg`;
+    const { room } = this.props;
+    return `${BANNER_PATH}${room.id}.jpg`;
   }
   render(): JSX.Element {
+    const { room } = this.props;
     return (
       <React.Fragment>
         <Container className="sidecard">
@@ -20,12 +22,12 @@ class SideCard extends React.Component<ICustomRoomInfoProps> {
             <Col className="room-name">
               Raum:
               <br />
-              <strong>{this.props.room.meta.room}</strong>
+              <strong>{room.meta.room}</strong>
             </Col>
             <Col className="room-image">
               <img width="100%" src={this.getImagePath()} alt="{this.props.room.meta.room}" />
             </Col>
-            <Col className="room-desc">{this.props.room.meta.description}</Col>
+            <Col className="room-desc">{room.meta.description}</Col>
             <Col className="current-date">
               {FormatUtils.getFormatWeekday(this.date)}, {FormatUtils.getFormatTimeHHMM(this.date)} Uhr
             </Col>

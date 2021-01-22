@@ -8,14 +8,15 @@ import AusstattungType from '../../shared/models/AusstattungType';
 
 class RoomInfoBox extends React.Component<ICustomRoomInfoProps> {
   render(): JSX.Element {
+    const { room } = this.props;
     return (
       <React.Fragment>
-        <Container className="roomInfoBox" onClick={() => RoutingHelper.showRoomOverview(this.props.room)}>
+        <Container className="roomInfoBox" onClick={() => RoutingHelper.showRoomOverview(room)}>
           <Row xs="1">
-            <Col className="room-name">{this.props.room.meta.room}</Col>
-            <Col className="room-desc">{this.props.room.meta.plaetze} Personen</Col>
+            <Col className="room-name">{room.meta.room}</Col>
+            <Col className="room-desc">{room.meta.plaetze} Personen</Col>
             <Col className="room-meta">
-              {this.props.room.meta.ausstattung?.map((ausstattung: AusstattungType) => (
+              {room.meta.ausstattung?.map((ausstattung: AusstattungType) => (
                 <MetaIcon key={ausstattung} icon={ausstattung} />
               ))}
             </Col>

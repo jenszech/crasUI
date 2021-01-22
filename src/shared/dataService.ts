@@ -1,5 +1,5 @@
 export default class DataService {
-  public getRooms() {
+  public static getRooms() {
     let url = 'http://localhost';
     if (process.env.REACT_APP_API !== undefined && process.env.REACT_APP_ENDPOINT_ROOM !== undefined) {
       url = process.env.REACT_APP_API + process.env.REACT_APP_ENDPOINT_ROOM;
@@ -16,7 +16,7 @@ export default class DataService {
     });
   }
 
-  public getTasksByRooms(roomId: string) {
+  public static getTasksByRooms(roomId: string) {
     let url = 'http://localhost';
     if (process.env.REACT_APP_API !== undefined && process.env.REACT_APP_ENDPOINT_ROOM !== undefined) {
       url = process.env.REACT_APP_API + process.env.REACT_APP_ENDPOINT_ROOM_DETAIL;
@@ -33,7 +33,7 @@ export default class DataService {
       return response.json();
     });
   }
-  public putTasksByRooms(roomId: string, start: Date, duration: number) {
+  public static putTasksByRooms(roomId: string, start: Date, duration: number) {
     let url = 'http://localhost';
     if (process.env.REACT_APP_API !== undefined && process.env.REACT_APP_ENDPOINT_ROOM !== undefined) {
       url = process.env.REACT_APP_API + process.env.REACT_APP_ENDPOINT_ROOM_DETAIL;

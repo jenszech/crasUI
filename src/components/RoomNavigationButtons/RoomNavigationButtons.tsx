@@ -12,22 +12,23 @@ export interface ICustomRoomButtonProps {
 
 class RoomNavigationButtons extends Component<ICustomRoomButtonProps> {
   render(): JSX.Element {
+    const { page, room } = this.props;
     return (
       <Fragment>
         <Container className="button">
           <Row>
-            {this.props.page !== 'info' && (
-              <Col className="buttonLeft" onClick={() => RoutingHelper.showRoomInfo(this.props.room)}>
+            {page !== 'info' && (
+              <Col className="buttonLeft" onClick={() => RoutingHelper.showRoomInfo(room)}>
                 &gt;&gt; Raum Informationen
               </Col>
             )}
-            {this.props.page !== 'detail' && (
-              <Col className="buttonLeft" onClick={() => RoutingHelper.showRoomOverview(this.props.room)}>
+            {page !== 'detail' && (
+              <Col className="buttonLeft" onClick={() => RoutingHelper.showRoomOverview(room)}>
                 &gt;&gt; Raum Details
               </Col>
             )}
-            {this.props.page !== 'tasklist' && (
-              <Col className="buttonRight" onClick={() => RoutingHelper.showRoomDetail(this.props.room)}>
+            {page !== 'tasklist' && (
+              <Col className="buttonRight" onClick={() => RoutingHelper.showRoomDetail(room)}>
                 &gt;&gt; Alle Termine anzeigen
               </Col>
             )}

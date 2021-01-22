@@ -7,13 +7,14 @@ import MetaIconHelper from '../../shared/utils/MetaIconHelper';
 
 class MetaIconDetail extends Component<ICustomIconProps> {
   render(): JSX.Element {
+    const { icon } = this.props;
     return (
       <Fragment>
         <div className="metainfo-detail">
           <div className="icon">
-            <FontAwesomeIcon icon={MetaIconHelper.getIconClass(this.props.icon)} />
+            <FontAwesomeIcon icon={MetaIconHelper.getIconClass(icon)} />
           </div>
-          <div className="icon-desc">{MetaIconHelper.getToolTyp(this.props.icon)}</div>
+          <div className="icon-desc">{MetaIconHelper.getToolTyp(icon)}</div>
         </div>
       </Fragment>
     );

@@ -8,19 +8,17 @@ export default class TaskService {
 
   public loadTasks(roomId: string, callbackFunction: () => void) {
     console.log('TaskService.loadTasks');
-    this.dataService
-      .getTasksByRooms(roomId)
+    DataService.getTasksByRooms(roomId)
       .then((result) => {
-        this.roomAgenda = this.parseJson(result);
+        this.roomAgenda = TaskService.parseJson(result);
         console.log(`TaskService.loadTask - loading completed: ${this.roomAgenda.roomName}`);
         callbackFunction();
       })
       .catch((error) => console.error(error));
   }
-  public storeTasks(roomId: string, start: Date, duration: number, callbackFunction: () => void) {
+  public static storeTasks(roomId: string, start: Date, duration: number, callbackFunction: () => void) {
     console.log('TaskService.storeTasks');
-    this.dataService
-      .putTasksByRooms(roomId, start, duration)
+    DataService.putTasksByRooms(roomId, start, duration)
       .then((result) => {
         console.log(`TaskService.storeTask - completed ${result.toString()}`);
         callbackFunction();
@@ -28,7 +26,7 @@ export default class TaskService {
       .catch((error) => console.error(error));
   }
 
-  private parseJson(result: RoomAgenda): RoomAgenda {
+  private static parseJson(result: RoomAgenda): RoomAgenda {
     const agenda = new RoomAgenda();
     result.appointments.forEach((element) => {
       const book = new Booking();
@@ -49,11 +47,11 @@ export default class TaskService {
     return new Array<Booking>();
   }
 
-  isNext(appointment: Booking) {
+  static isNext(appointment: Booking) {
     const now = new Date();
     return appointment.startTime > now;
   }
-  isNow(appointment: Booking) {
+  static isNow(appointment: Booking) {
     const now = new Date();
     return appointment.startTime < now && appointment.endTime > now;
   }
@@ -62,7 +60,7 @@ export default class TaskService {
     if (this.roomAgenda.appointments === undefined || this.roomAgenda.appointments.length === 0) {
       return new Booking();
     }
-    const next = this.roomAgenda.appointments.filter(this.isNow);
+    const next = this.roomAgenda.appointments.filter(TaskService.isNow);
     console.log(
       `TaskService.getCurrentAppointment - Load NowAppointment - Count: ${this.roomAgenda.appointments.length} -> ${next.length}`,
     );
@@ -76,7 +74,7 @@ export default class TaskService {
     if (this.roomAgenda.appointments === undefined || this.roomAgenda.appointments.length === 0) {
       return new Booking();
     }
-    const next = this.roomAgenda.appointments.filter(this.isNext);
+    const next = this.roomAgenda.appointments.filter(TaskService.isNext);
     console.log(
       `TaskService.getNextAppointment - Load NexAppointment - Count: ${this.roomAgenda.appointments.length} -> ${next.length}`,
     );

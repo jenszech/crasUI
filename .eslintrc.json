@@ -35,13 +35,9 @@
 
         "react/state-in-constructor": ["warn"],
         "react/no-unused-state": ["warn"],
-        "react/destructuring-assignment": ["warn"],
         "react/no-access-state-in-setstate": ["warn"],
         "react/prefer-stateless-function": ["warn"],
-        "consistent-return": ["warn"],
-        "class-methods-use-this": ["warn"],
         "@typescript-eslint/ban-ts-comment":  ["warn"],
-        "no-param-reassign": ["warn"],
         "react/sort-comp": ["warn"]
     }
 }

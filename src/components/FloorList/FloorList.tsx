@@ -21,6 +21,7 @@ class FloorList extends React.Component {
   };
 
   render(): JSX.Element {
+    const { floors } = this.state;
     return (
       <React.Fragment>
         <Container className="floorlist">
@@ -28,7 +29,7 @@ class FloorList extends React.Component {
             <Col xs={{ size: 1 }}>Etage</Col>
             <Col>Räume</Col>
           </Row>
-          {this.state.floors.map((floor) => (
+          {floors.map((floor) => (
             <Row key={floor} className="floorRow">
               <Col xs={{ size: 1 }}>{floor}</Col>
               <Col>

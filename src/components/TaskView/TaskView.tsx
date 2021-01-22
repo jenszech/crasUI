@@ -29,8 +29,9 @@ class TaskView extends Component<ICustomRoomInfoProps> {
   }
 
   getData = (): void => {
-    this.taskService.loadTasks(this.props.room.id, this.updateUi);
-    console.log('Taskview.getData - Room: ', this.props.room.id);
+    const { room } = this.props;
+    this.taskService.loadTasks(room.id, this.updateUi);
+    console.log('Taskview.getData - Room: ', room.id);
   };
 
   private updateUi = (): void => {
@@ -40,16 +41,10 @@ class TaskView extends Component<ICustomRoomInfoProps> {
     });
   };
 
-  private static getRowClass(appointment: Booking | undefined): string {
-    if (appointment === undefined || appointment.blocked) {
-      return '';
-    }
-    return 'free';
-  }
-
-  private static taskEntrie(room: Room, appointment: Booking | undefined, isBookable: boolean) {
+  // eslint-disable-next-line react/sort-comp
+  private static taskEntrie(room: Room, appointment: Booking | undefined, isBookable: boolean): JSX.Element | null {
     if (appointment === undefined) {
-      return;
+      return null;
     }
     return (
       <Row
@@ -71,11 +66,11 @@ class TaskView extends Component<ICustomRoomInfoProps> {
     );
   }
 
-  private static progressBar(appointment: Booking | undefined) {
-    if (appointment === undefined || !appointment.blocked) return '';
+  private static progressBar(appointment: Booking | undefined): JSX.Element | null {
+    if (appointment === undefined || !appointment.blocked) return null;
     const now = new Date();
     if (!(appointment.startTime < now && appointment.endTime > now)) {
-      return;
+      return null;
     }
     const start = appointment.startTime.getHours() * 60 + appointment.startTime.getMinutes();
     const actMinutes = now.getHours() * 60 + now.getMinutes();
@@ -90,15 +85,24 @@ class TaskView extends Component<ICustomRoomInfoProps> {
     );
   }
 
+  private static getRowClass(appointment: Booking | undefined): string {
+    if (appointment === undefined || appointment.blocked) {
+      return '';
+    }
+    return 'free';
+  }
+
   render() {
+    const { room } = this.props;
+    const { current, next } = this.state;
     return (
       <Fragment>
         <Container className="task">
-          {TaskView.progressBar(this.state.current)}
-          {TaskView.taskEntrie(this.props.room, this.state.current, this.state.current?.isBookable())}
-          {TaskView.taskEntrie(this.props.room, this.state.next, this.state.next?.isBookable())}
+          {TaskView.progressBar(current)}
+          {TaskView.taskEntrie(room, current, current?.isBookable())}
+          {TaskView.taskEntrie(room, next, next?.isBookable())}
         </Container>
-        <RoomNavigationButtons page="detail" room={this.props.room} />
+        <RoomNavigationButtons page="detail" room={room} />
       </Fragment>
     );
   }

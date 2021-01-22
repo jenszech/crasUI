@@ -18,8 +18,9 @@ class TaskList extends React.Component<ICustomRoomInfoProps> {
   private timer: any;
 
   componentDidMount(): void {
-    console.log('TaskList - componentDidMount: ', this.props.room.id);
-    this.taskService.loadTasks(this.props.room.id, this.updateUi);
+    const { room } = this.props;
+    console.log('TaskList - componentDidMount: ', room.id);
+    this.taskService.loadTasks(room.id, this.updateUi);
     this.timer = setInterval(this.redirectToRoomDetail, REDIRECT_TO_DETAILPAGE_TIME);
   }
   componentWillUnmount(): void {
@@ -37,7 +38,8 @@ class TaskList extends React.Component<ICustomRoomInfoProps> {
   }
 
   redirectToRoomDetail = (): void => {
-    RoutingHelper.showRoomOverview(this.props.room);
+    const { room } = this.props;
+    RoutingHelper.showRoomOverview(room);
   };
 
   private updateUi = (): void => {
@@ -47,12 +49,14 @@ class TaskList extends React.Component<ICustomRoomInfoProps> {
   };
 
   render(): JSX.Element {
+    const { room } = this.props;
+    const { appointments } = this.state;
     return (
       <React.Fragment>
         <Container className="taskList">
           <Row className="header">
             <Col xs={{ size: 6 }}>
-              Raum: <strong>{this.props.room.meta.room}</strong>
+              Raum: <strong>{room.meta.room}</strong>
             </Col>
             <Col className="time">
               {FormatUtils.getFormatDayAndDate(this.date)}
@@ -60,11 +64,11 @@ class TaskList extends React.Component<ICustomRoomInfoProps> {
               {FormatUtils.getFormatDayAndDate(this.date)} Uhr
             </Col>
           </Row>
-          {this.state.appointments.map((appointment, index) => (
+          {appointments.map((appointment, index) => (
             <Row
               key={uuid()}
               className={this.getRowClass(appointment)}
-              onClick={() => RoutingHelper.showBookingSelection(this.props.room, appointment, appointment.isBookable())}
+              onClick={() => RoutingHelper.showBookingSelection(room, appointment, appointment.isBookable())}
             >
               <Col xs={{ size: 3 }} className="time">
                 {FormatUtils.getFormatTimeHHMM(appointment.startTime)} -{' '}
@@ -76,7 +80,7 @@ class TaskList extends React.Component<ICustomRoomInfoProps> {
               </Col>
             </Row>
           ))}
-          <RoomNavigationButtons page="tasklist" room={this.props.room} />
+          <RoomNavigationButtons page="tasklist" room={room} />
         </Container>
       </React.Fragment>
     );
