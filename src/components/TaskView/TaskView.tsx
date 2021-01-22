@@ -55,9 +55,13 @@ class TaskView extends Component<ICustomRoomInfoProps> {
                     className="time">{FormatUtils.getFormatTimeHHMM(appointment?.startTime)} - {FormatUtils.getFormatTimeHHMM(appointment.endTime)} </Col>
                 <Col className="title">{appointment.title}</Col>
                 <Col className="user">{appointment.user}</Col>
+                {appointment.blocked &&
+                <Col className="link"><a href={room.meta.link}>{room.meta.link}</a></Col>
+                }
             </Row>
         );
     }
+
     private static progressBar(appointment: Booking|undefined) {
         if ((appointment === undefined) || !appointment.blocked) return "";
         let now = new Date();

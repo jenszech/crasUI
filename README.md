@@ -1,10 +1,9 @@
-# crasUI 
+# CRAS UI - <ins>C</ins>onference <ins>R</ins>oom <ins>A</ins>ssisting <ins>S</ins>ystem
 
-Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
-* **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
-* **[cras](https://github.com/jenszech/cras)** - stellt das benötigte Backend bereit
-* Optional **[crasBadgeIt](https://github.com/jenszech/crasBadgeIt)** - Ein microcontroller projekt for small ePaper devices
-* Optional **[crasAndroidViewer](https://github.com/jenszech/crasAndroidViewer)** - Eine Android App mit einem einfachem fullscreen Webviewer
+[![Release](https://img.shields.io/github/release/jenszech/crasui.svg)](https://github.com/jenszech/crasui/releases/latest)
+[![Issues](https://img.shields.io/github/issues/jenszech/crasui.svg)](https://github.com/jenszech/crasui/issues)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 
 ## Features
 
@@ -13,18 +12,32 @@ Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
 
 ### Roadmap
 
-* Spontane Schnellbuchung eines Raums
-* Filtern/Suchen der Räume nach bestimmten Eigenschaften
-* Bessere Raum Detailinformation (Telefon, etc.)
-* Tagesübersicht über alle Räume hinweg
-* Legende für die Eigenschaften
-* TopListen
-** Am häugisten gebuchte Räume
-** Nutzer die am häufigsten Termine überziehen
-** Nutzung der spontan Buchung
- 
-   
+* CRAS auch ohne VPN erreichbar machen
+    * Die Schnittstellen mit einem Auth verfahren und Token absichern
+    * Speicherung und verwaltung der Tokens damit nicht täglich ein erneutes Login nötig ist
+* Das Frontend mit einem Login und User erweitern
+    * Cookie & Session Handling
+* Weitere Features
+    * Buchen eines Raumes unter eigenem Namen direkt aus CRAS
+    * Anzeige auf der Raumübersicht ob der Raum aktuell frei ist
+    * Tagesübersicht über alle Räume hinweg
+    * Filtern/Suchen der Räume nach bestimmten Eigenschaften
+    * Bessere Raum Detailinformation (Telefon, etc.)
+    * Legende für die Eigenschaften
+    * TopListen
+        * Am häugisten gebuchte Räume
+        * Nutzer die am häufigsten Termine überziehen
+        * Nutzung der spontan Buchung
+  
 Für geplante Features und Änderungen siehe [CHANGELOG.md](CHANGELOG.md)
+
+### Teilprojekte
+Das Projekt setzt sich dabei aus mehreren Modulen zusammen:
+* **crasUI** - Dieses Projekt stellt ein responsives React Frontend bereit
+* **[cras](https://github.com/jenszech/cras)** - stellt das benötigte Backend bereit
+* Optional **[crasBadgeIt](https://github.com/jenszech/crasBadgeIt)** - Ein microcontroller projekt for small ePaper devices
+* Optional **[crasAndroidViewer](https://github.com/jenszech/crasAndroidViewer)** - Eine Android App mit einem einfachem fullscreen Webviewer
+
      
 ## Getting Started
 
@@ -78,6 +91,20 @@ git pull
 pm2 restart crasUI
 ```
 
+## Entwicklung
+### lokales mock backend
+Für die Entwicklung des Frontends kann es hilfreich sein unabhängige und verlässliche Antworten zu bekommen. Dafür besteht die Möglichkeit das verwendette Backend aus dem separaten "cras" Projekt zu mocken.
+Die benötigten mocks liegen unter ./src/mocks/
+
+```
+npm run mock-backend
+==> Mockserver serving mocks {verbose:true} under "src/mocks" at http://localhost:3001
+```
+Danach kann lokal auf die API zugegriffen werden:
+* http://localhost:3001/rooms - Übersicht aller Räume
+* http://localhost:3001/rooms/Raum_Curie@tde.thalia.de - Abrufen von Raumdetails
+* http://localhost:3001/metaTypes - Liste aller unterstützten Raum Eigenschaften
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -104,46 +131,6 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ## Built With
 
