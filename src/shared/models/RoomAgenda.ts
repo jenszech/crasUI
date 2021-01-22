@@ -1,6 +1,6 @@
-import {Booking} from './Booking';
+import Booking from './Booking';
 
-export class RoomAgenda {
-    roomName: string = "";
-    appointments: Array<Booking> = new Array<Booking>();
+export default class RoomAgenda {
+  roomName = '';
+  appointments: Array<Booking> = new Array<Booking>();
 }

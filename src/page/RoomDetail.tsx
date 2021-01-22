@@ -1,25 +1,24 @@
 import * as React from 'react';
-import {Container} from "reactstrap";
-import TaskList from "../components/TaskList";
-import {Component} from "react";
-import {RouteComponentProps} from "react-router";
-import {ICustomRoomInfoProps} from "../shared/interface/ICustomRoomInfoProps";
+import { Container } from 'reactstrap';
+import { RouteComponentProps } from 'react-router';
+import TaskList from '../components/TaskList';
+import { ICustomRoomInfoProps } from '../shared/interface/ICustomRoomInfoProps';
 
-class roomDetail extends Component<RouteComponentProps> {
-    state = {room: (this.props.location.state as ICustomRoomInfoProps).room};
+class RoomDetail extends React.Component<RouteComponentProps> {
+  state = { room: (this.props.location.state as ICustomRoomInfoProps).room };
 
-    constructor(props: Readonly<RouteComponentProps>) {
-        super(props);
-        console.log("RoomDetail.constructor - room => "+ this.state.room.id);
-    }
+  constructor(props: Readonly<RouteComponentProps>) {
+    super(props);
+    console.log(`RoomDetail.constructor - room => ${this.state.room.id}`);
+  }
 
-    render() {
-        return (
-
-            <Container>
-                <TaskList room={this.state.room}/>
-            </Container>
-        );
-    }
+  render(): JSX.Element {
+    // const { room } = this.props;
+    return (
+      <Container>
+        <TaskList room={this.state.room} />
+      </Container>
+    );
+  }
 }
-export default roomDetail;
+export default RoomDetail;

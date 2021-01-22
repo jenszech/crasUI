@@ -1,5 +1,5 @@
-import {Room} from "../models/Room";
+import Room from '../models/Room';
 
 export interface ICustomRoomInfoProps {
-    room: Room;
+  room: Room;
 }

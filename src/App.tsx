@@ -11,23 +11,23 @@ import Booking from './page/Booking';
 
 import history from './shared/history';
 
-function App() {
-    return (
-        <Fragment>
-            <Router history={history}>
-                <Header/>
-                <main>
-                    <Switch>
-                        <Route path="/" component={RoomList} exact/>
-                        <Route path="/overview" component={RoomOverview}/>
-                        <Route path="/detail" component={RoomDetail}/>
-                        <Route path="/info" component={RoomInfo}/>
-                        <Route path="/booking" component={Booking}/>
-                    </Switch>
-                </main>
-            </Router>
-        </Fragment>
-    );
+function App(): JSX.Element {
+  return (
+    <Fragment>
+      <Router history={history}>
+        <Header />
+        <main>
+          <Switch>
+            <Route path="/" component={RoomList} exact />
+            <Route path="/overview" component={RoomOverview} />
+            <Route path="/detail" component={RoomDetail} />
+            <Route path="/info" component={RoomInfo} />
+            <Route path="/booking" component={Booking} />
+          </Switch>
+        </main>
+      </Router>
+    </Fragment>
+  );
 }
 
 export default App;

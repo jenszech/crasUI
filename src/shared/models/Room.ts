@@ -1,7 +1,7 @@
-import {RoomMetaInfo} from './RoomMetaInfo';
+import RoomMetaInfo from './RoomMetaInfo';
 
-export class Room {
-    id: string = "";
-    name: string = "";
-    meta: RoomMetaInfo = new RoomMetaInfo();
+export default class Room {
+  id = '';
+  name = '';
+  meta: RoomMetaInfo = new RoomMetaInfo();
 }

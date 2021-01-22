@@ -1,13 +1,13 @@
-import {AusstattungType} from './AusstattungType';
+import AusstattungType from './AusstattungType';
 
-export class RoomMetaInfo {
-    id: string = "";
-    name: string = "";
-    room: string = "";
-    tel: string = "";
-    link: string = "";
-    etage: string = "";
-    plaetze: number = 0;
-    description: string ="";
-    ausstattung: Array<AusstattungType> = new Array<AusstattungType>();
+export default class RoomMetaInfo {
+  id = '';
+  name = '';
+  room = '';
+  tel = '';
+  link = '';
+  etage = '';
+  plaetze = 0;
+  description = '';
+  ausstattung: Array<AusstattungType> = new Array<AusstattungType>();
 }

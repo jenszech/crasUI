@@ -1,6 +1,5 @@
-import {AusstattungType} from "../models/AusstattungType";
+import AusstattungType from '../models/AusstattungType';
 
 export interface ICustomIconProps {
-    icon: AusstattungType;
+  icon: AusstattungType;
 }
-

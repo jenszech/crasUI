@@ -1,30 +1,30 @@
 .task {
   font-family: Oswald, sans-serif;
   font-weight: 200;
-  color: #765D69;
+  color: #765d69;
   text-align: center;
 }
 
 .task .row {
-  background: #EEEEEE;
+  background: #eeeeee;
   padding: 20px;
   margin-left: 10px;
   margin-bottom: 25px;
 }
 
-.task .row  .time{
+.task .row .time {
   font-size: 1.5rem;
 }
-.task .row  .title{
+.task .row .title {
   font-size: 1.75rem;
   font-weight: bolder;
 }
-.task .row  .user{
+.task .row .user {
   font-size: 1.25rem;
   font-style: italic;
 }
 
-.task .free .title{
+.task .free .title {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: bold;
@@ -35,10 +35,10 @@
 }
 
 .task .row:hover {
-  background-color: #765D69;
+  background-color: #765d69;
 }
 .task .row:hover .col {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .progress {
@@ -48,6 +48,6 @@
 }
 
 .bg-awesomer {
-  background-color: #FEFAD4;
-  color: #765D69;
+  background-color: #fefad4;
+  color: #765d69;
 }
