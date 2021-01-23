@@ -106,7 +106,7 @@ class TaskView extends Component<ICustomRoomInfoProps, IStateTaskView> {
     return 'free';
   }
 
-  render() {
+  render(): JSX.Element {
     const { room } = this.props;
     const { current, next } = this.state;
     return (

@@ -18,7 +18,7 @@ class Header extends Component<any, IStateHeader> {
     };
     console.log('Header.constructor');
   }
-  componentDidMount() {
+  componentDidMount(): void {
     console.log('Header.componentDidMount');
   }
 

@@ -22,7 +22,7 @@ class RoomOverview extends React.Component<RouteComponentProps, MyState> {
     // console.log(`RoomOverview.constructor - room => ${this.state.room.id}`);
   }
 
-  render() {
+  render(): JSX.Element {
     const { room } = this.state;
     return (
       <Container>

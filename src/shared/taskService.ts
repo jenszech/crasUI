@@ -4,9 +4,8 @@ import Booking from './models/Booking';
 
 export default class TaskService {
   private roomAgenda: RoomAgenda = new RoomAgenda();
-  private dataService = new DataService();
 
-  public loadTasks(roomId: string, callbackFunction: () => void) {
+  public loadTasks(roomId: string, callbackFunction: () => void): void {
     console.log('TaskService.loadTasks');
     DataService.getTasksByRooms(roomId)
       .then((result) => {
@@ -16,7 +15,7 @@ export default class TaskService {
       })
       .catch((error) => console.error(error));
   }
-  public static storeTasks(roomId: string, start: Date, duration: number, callbackFunction: () => void) {
+  public static storeTasks(roomId: string, start: Date, duration: number, callbackFunction: () => void): void {
     console.log('TaskService.storeTasks');
     DataService.putTasksByRooms(roomId, start, duration)
       .then((result) => {
@@ -47,11 +46,11 @@ export default class TaskService {
     return new Array<Booking>();
   }
 
-  static isNext(appointment: Booking) {
+  static isNext(appointment: Booking): boolean {
     const now = new Date();
     return appointment.startTime > now;
   }
-  static isNow(appointment: Booking) {
+  static isNow(appointment: Booking): boolean {
     const now = new Date();
     return appointment.startTime < now && appointment.endTime > now;
   }

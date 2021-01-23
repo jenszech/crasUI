@@ -3,7 +3,7 @@ import Booking from '../models/Booking';
 import history from '../history';
 
 export default class RoutingHelper {
-  public static showBookingSelection(room: Room, appointment: Booking, isBookable: boolean) {
+  public static showBookingSelection(room: Room, appointment: Booking, isBookable: boolean): void {
     if (isBookable) {
       console.log(`RoutingHelper.showBookingSelection - Open BookingSelection: ${room.id}`);
       history.push({
@@ -17,7 +17,7 @@ export default class RoutingHelper {
     }
   }
 
-  public static showRoomOverview(room: Room) {
+  public static showRoomOverview(room: Room): void {
     console.log(`RoutingHelper.showRoomOverview - Open Room: ${room.id}`);
     history.push({
       pathname: '/overview',
@@ -26,7 +26,7 @@ export default class RoutingHelper {
     });
   }
 
-  public static showRoomDetail(room: Room) {
+  public static showRoomDetail(room: Room): void {
     console.log(`RoutingHelper.showRoomDetail - Open RoomTasks: ${room.id}`);
     history.push({
       pathname: '/detail',
@@ -35,7 +35,7 @@ export default class RoutingHelper {
     });
   }
 
-  public static showRoomInfo(room: Room) {
+  public static showRoomInfo(room: Room): void {
     console.log(`RoutingHelper.showRoomMeta - Open RoomInfo: ${room.id}`);
     history.push({
       pathname: '/info',

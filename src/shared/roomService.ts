@@ -38,11 +38,11 @@ export default class RoomService {
     return this.roomsByFloor;
   }
 
-  public getFloors() {
+  public getFloors(): IterableIterator<string> {
     return this.roomsByFloor.keys();
   }
 
-  public getRoomByFloor(floor: string) {
+  public getRoomByFloor(floor: string): Room[] | undefined {
     if (this.roomsByFloor.get(floor) === undefined) return [];
     return this.roomsByFloor.get(floor);
   }
