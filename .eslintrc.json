@@ -34,9 +34,9 @@
         "no-console": "off",
 
 //        "react/state-in-constructor": ["warn"],
-        "react/no-unused-state": ["warn"],
-        "react/no-access-state-in-setstate": ["warn"],
-        "react/prefer-stateless-function": ["warn"],
+//        "react/no-unused-state": ["warn"],
+//        "react/no-access-state-in-setstate": ["warn"],
+//        "react/prefer-stateless-function": ["warn"],
         "@typescript-eslint/ban-ts-comment":  ["warn"],
         "react/sort-comp": ["warn"]
     }

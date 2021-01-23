@@ -4,7 +4,6 @@ import RoomInfoBox from '../RoomInfoBox';
 import './FloorList.scss';
 import RoomService from '../../shared/roomService';
 import IStateFloorlist from '../../shared/interface/IStateFloorList';
-import Room from '../../shared/models/Room';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IPropsEmpty {}
@@ -16,7 +15,6 @@ class FloorList extends React.Component<IPropsEmpty, IStateFloorlist> {
     super(props);
     this.state = {
       floors: [],
-      rooms: new Map<string, Array<Room>>(),
     };
     this.roomsService = new RoomService();
   }
@@ -28,7 +26,6 @@ class FloorList extends React.Component<IPropsEmpty, IStateFloorlist> {
 
   private updateUi = (): void => {
     this.setState({
-      rooms: this.roomsService.getRooms(),
       floors: Array.from(this.roomsService.getFloors()),
     });
   };
