@@ -3,10 +3,23 @@ import { Container, Row, Col } from 'reactstrap';
 import RoomInfoBox from '../RoomInfoBox';
 import './FloorList.scss';
 import RoomService from '../../shared/roomService';
+import IStateFloorlist from '../../shared/interface/IStateFloorList';
+import Room from '../../shared/models/Room';
 
-class FloorList extends React.Component {
-  state = { floors: [], rooms: [] };
-  private roomsService = new RoomService();
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IPropsEmpty {}
+
+class FloorList extends React.Component<IPropsEmpty, IStateFloorlist> {
+  private roomsService: RoomService;
+
+  constructor(props: IPropsEmpty) {
+    super(props);
+    this.state = {
+      floors: [],
+      rooms: new Map<string, Array<Room>>(),
+    };
+    this.roomsService = new RoomService();
+  }
 
   componentDidMount(): void {
     console.log('FloorList.componentDidMount');

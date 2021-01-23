@@ -33,7 +33,7 @@
         "@typescript-eslint/lines-between-class-members": ["off", "element"],
         "no-console": "off",
 
-        "react/state-in-constructor": ["warn"],
+//        "react/state-in-constructor": ["warn"],
         "react/no-unused-state": ["warn"],
         "react/no-access-state-in-setstate": ["warn"],
         "react/prefer-stateless-function": ["warn"],

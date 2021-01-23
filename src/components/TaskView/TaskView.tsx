@@ -5,6 +5,7 @@ import './TaskView.scss';
 import TaskService from '../../shared/taskService';
 import Booking from '../../shared/models/Booking';
 import { ICustomRoomInfoProps } from '../../shared/interface/ICustomRoomInfoProps';
+import IStateTaskView from '../../shared/interface/IStateTaskView';
 import Room from '../../shared/models/Room';
 import RoomNavigationButtons from '../RoomNavigationButtons/RoomNavigationButtons';
 import RoutingHelper from '../../shared/utils/RoutingHelper';
@@ -12,13 +13,18 @@ import FormatUtils from '../../shared/utils/FormatUtils';
 
 const RELOAD_TASK_TIMER = 5 * 60 * 1000;
 
-class TaskView extends Component<ICustomRoomInfoProps> {
-  state = {
-    current: new Booking(),
-    next: new Booking(),
-  };
-  private taskService = new TaskService();
+class TaskView extends Component<ICustomRoomInfoProps, IStateTaskView> {
+  private taskService: TaskService;
   private timer: any;
+
+  constructor(props: ICustomRoomInfoProps) {
+    super(props);
+    this.state = {
+      current: new Booking(),
+      next: new Booking(),
+    };
+    this.taskService = new TaskService();
+  }
 
   componentDidMount(): void {
     this.getData();
@@ -42,15 +48,23 @@ class TaskView extends Component<ICustomRoomInfoProps> {
   };
 
   // eslint-disable-next-line react/sort-comp
-  private static taskEntrie(room: Room, appointment: Booking | undefined, isBookable: boolean): JSX.Element | null {
+  private static taskEntrie(
+    room: Room,
+    appointment: Booking | undefined,
+    isBookable: boolean | undefined,
+  ): JSX.Element | null {
     if (appointment === undefined) {
       return null;
+    }
+    let isBookableInt = false;
+    if (isBookable !== undefined) {
+      isBookableInt = false;
     }
     return (
       <Row
         xs="1"
         className={TaskView.getRowClass(appointment)}
-        onClick={() => RoutingHelper.showBookingSelection(room, appointment, isBookable)}
+        onClick={() => RoutingHelper.showBookingSelection(room, appointment, isBookableInt)}
       >
         <Col className="time">
           {FormatUtils.getFormatTimeHHMM(appointment?.startTime)} - {FormatUtils.getFormatTimeHHMM(appointment.endTime)}{' '}

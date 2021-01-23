@@ -8,14 +8,23 @@ import { ICustomRoomInfoProps } from '../../shared/interface/ICustomRoomInfoProp
 import RoomNavigationButtons from '../RoomNavigationButtons/RoomNavigationButtons';
 import RoutingHelper from '../../shared/utils/RoutingHelper';
 import FormatUtils from '../../shared/utils/FormatUtils';
+import IStateTasklist from '../../shared/interface/IStateTaskList';
 
 const REDIRECT_TO_DETAILPAGE_TIME = 5 * 60 * 1000;
 
-class TaskList extends React.Component<ICustomRoomInfoProps> {
-  state = { appointments: new Array<Booking>() };
-  private taskService = new TaskService();
-  private date = new Date();
+class TaskList extends React.Component<ICustomRoomInfoProps, IStateTasklist> {
+  private taskService: TaskService;
+  private date: Date;
   private timer: any;
+
+  constructor(props: ICustomRoomInfoProps) {
+    super(props);
+    this.state = {
+      appointments: new Array<Booking>(),
+    };
+    this.taskService = new TaskService();
+    this.date = new Date();
+  }
 
   componentDidMount(): void {
     const { room } = this.props;
