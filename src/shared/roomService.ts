@@ -9,9 +9,11 @@ export default class RoomService {
     if (this.roomsByFloor.size === 0) {
       console.log('RoomService.loadRooms');
       DataService.getRooms()
-        .then((result) => {
-          this.roomsByFloor = RoomService.parseJson(result);
-          console.log(`RoomService.loadRooms - loading completed: ${this.roomsByFloor}`);
+        .then((roomList) => {
+          if (roomList != null) {
+            this.roomsByFloor = RoomService.getFloorMap(roomList);
+            console.log(`RoomService.loadRooms - loading completed: ${this.roomsByFloor}`);
+          }
           callbackFunction();
         })
         .catch((error) => console.error(error));
@@ -20,17 +22,15 @@ export default class RoomService {
     }
   }
 
-  private static parseJson(result: any): Map<string, Array<Room>> {
+  private static getFloorMap(roomList: Room[]): Map<string, Array<Room>> {
     const roomsByFloor = new Map<string, Array<Room>>();
-    result.forEach((room: Room) => {
+    roomList.forEach((room: Room) => {
       const key = room.meta.etage;
       if (!roomsByFloor.has(key)) {
         roomsByFloor.set(key, new Array<Room>());
       }
-      // @ts-ignore
-      roomsByFloor.get(key).push(room);
+      roomsByFloor.get(key)?.push(room);
     });
-    // @ts-ignore
     return new Map([...roomsByFloor.entries()].sort());
   }
 

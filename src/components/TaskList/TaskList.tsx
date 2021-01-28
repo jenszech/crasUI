@@ -73,7 +73,7 @@ class TaskList extends React.Component<ICustomRoomInfoProps, IStateTasklist> {
               {FormatUtils.getFormatDayAndDate(this.date)} Uhr
             </Col>
           </Row>
-          {appointments.map((appointment, index) => (
+          {appointments.map((appointment) => (
             <Row
               key={uuid()}
               className={this.getRowClass(appointment)}

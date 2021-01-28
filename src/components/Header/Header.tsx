@@ -10,8 +10,11 @@ if (process.env.REACT_APP_VERSION !== undefined) {
   version = `v ${process.env.REACT_APP_VERSION}`;
 }
 
-class Header extends Component<any, IStateHeader> {
-  constructor(props: any) {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IPropsEmpty {}
+
+class Header extends Component<IPropsEmpty, IStateHeader> {
+  constructor(props: never) {
     super(props);
     this.state = {
       collapsed: false,

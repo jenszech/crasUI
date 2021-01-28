@@ -9,7 +9,7 @@ export default class TaskService {
     console.log('TaskService.loadTasks');
     DataService.getTasksByRooms(roomId)
       .then((result) => {
-        this.roomAgenda = TaskService.parseJson(result);
+        this.roomAgenda = result;
         console.log(`TaskService.loadTask - loading completed: ${this.roomAgenda.roomName}`);
         callbackFunction();
       })
@@ -23,20 +23,6 @@ export default class TaskService {
         callbackFunction();
       })
       .catch((error) => console.error(error));
-  }
-
-  private static parseJson(result: RoomAgenda): RoomAgenda {
-    const agenda = new RoomAgenda();
-    result.appointments.forEach((element) => {
-      const book = new Booking();
-      book.startTime = new Date(element.startTime);
-      book.endTime = new Date(element.endTime);
-      book.title = element.title;
-      book.blocked = element.blocked;
-      book.user = element.user;
-      agenda.appointments.push(book);
-    });
-    return agenda;
   }
 
   public getTasks(): Array<Booking> {

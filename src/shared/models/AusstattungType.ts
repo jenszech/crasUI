@@ -10,5 +10,6 @@ enum AusstattungType {
   typ_polycom = 'typ_polycom',
   typ_desktop = 'typ_desktop',
   typ_beamer = 'typ_beamer',
+  unkown = 'unkown',
 }
 export default AusstattungType;
