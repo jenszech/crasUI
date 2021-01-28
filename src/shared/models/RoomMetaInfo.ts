@@ -11,7 +11,7 @@ export default class RoomMetaInfo {
   description = '';
   ausstattung: Array<AusstattungType> = new Array<AusstattungType>();
 
-  updateByJson(json: any) {
+  updateByJson(json: any): void {
     this.id = json.id;
     this.room = json.room;
     this.name = json.name;

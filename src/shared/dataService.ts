@@ -27,11 +27,13 @@ export default class DataService {
     });
   }
 
-  public static putTasksByRooms(roomId: string, start: Date, duration: number): Promise<any> {
+  public static putTasksByRooms(roomId: string, start: Date, duration: number): Promise<boolean> {
     let url = this.getBasicUrl(process.env.REACT_APP_ENDPOINT_ROOM_DETAIL);
     url += `${roomId}?start=${start.toISOString()}&duration=${duration}&room=${roomId}`;
     console.log(`DataService.putTasksByRooms - store: ${url} ${roomId}`);
-    return this.httpCall(url, { method: 'PUT' });
+    return this.httpCall(url, { method: 'PUT' }).then((data) => {
+      return data.booked === 'true';
+    });
   }
 
   private static getBasicUrl(endpoint: string | undefined) {

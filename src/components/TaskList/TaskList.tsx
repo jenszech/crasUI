@@ -15,7 +15,7 @@ const REDIRECT_TO_DETAILPAGE_TIME = 5 * 60 * 1000;
 class TaskList extends React.Component<ICustomRoomInfoProps, IStateTasklist> {
   private taskService: TaskService;
   private date: Date;
-  private timer: any;
+  private timer: NodeJS.Timeout | undefined;
 
   constructor(props: ICustomRoomInfoProps) {
     super(props);
@@ -33,7 +33,9 @@ class TaskList extends React.Component<ICustomRoomInfoProps, IStateTasklist> {
     this.timer = setInterval(this.redirectToRoomDetail, REDIRECT_TO_DETAILPAGE_TIME);
   }
   componentWillUnmount(): void {
-    clearInterval(this.timer);
+    if (this.timer !== undefined) {
+      clearInterval(this.timer);
+    }
   }
 
   private getRowClass(appointment: Booking): string {

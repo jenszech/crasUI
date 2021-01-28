@@ -4,7 +4,7 @@ export default class RoomAgenda {
   roomName = '';
   appointments: Array<Booking> = new Array<Booking>();
 
-  updateByJson(json: any) {
+  updateByJson(json: any): void {
     this.roomName = json.roomName;
     this.appointments = new Array<Booking>();
     // eslint-disable-next-line no-restricted-syntax

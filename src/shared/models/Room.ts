@@ -5,7 +5,7 @@ export default class Room {
   name = '';
   meta: RoomMetaInfo = new RoomMetaInfo();
 
-  updateByJson(json: any) {
+  updateByJson(json: any): void {
     this.id = json.id;
     this.name = json.name;
     this.meta.updateByJson(json.meta);

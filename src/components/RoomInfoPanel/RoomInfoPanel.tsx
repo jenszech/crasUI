@@ -10,13 +10,15 @@ import AusstattungType from '../../shared/models/AusstattungType';
 const REDIRECT_TO_DETAILPAGE_TIME = 1 * 60 * 1000;
 
 class RoomInfoPanel extends Component<ICustomRoomInfoProps> {
-  private timer: any;
+  private timer: NodeJS.Timeout | undefined;
 
   componentDidMount(): void {
     this.timer = setInterval(this.redirectToRoomDetail, REDIRECT_TO_DETAILPAGE_TIME);
   }
   componentWillUnmount(): void {
-    clearInterval(this.timer);
+    if (this.timer !== undefined) {
+      clearInterval(this.timer);
+    }
   }
 
   redirectToRoomDetail = (): void => {

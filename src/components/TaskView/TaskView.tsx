@@ -15,7 +15,7 @@ const RELOAD_TASK_TIMER = 5 * 60 * 1000;
 
 class TaskView extends Component<ICustomRoomInfoProps, IStateTaskView> {
   private taskService: TaskService;
-  private timer: any;
+  private timer: NodeJS.Timeout | undefined;
 
   constructor(props: ICustomRoomInfoProps) {
     super(props);
@@ -31,7 +31,9 @@ class TaskView extends Component<ICustomRoomInfoProps, IStateTaskView> {
     this.timer = setInterval(this.getData, RELOAD_TASK_TIMER);
   }
   componentWillUnmount(): void {
-    clearInterval(this.timer);
+    if (this.timer !== undefined) {
+      clearInterval(this.timer);
+    }
   }
 
   getData = (): void => {

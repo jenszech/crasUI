@@ -9,7 +9,7 @@ export default class Booking {
     return !this.blocked && new Date().getTime() < this.endTime.getTime();
   }
 
-  updateByJson(json: any) {
+  updateByJson(json: any): void {
     this.startTime = new Date(json.startTime);
     this.endTime = new Date(json.endTime);
     this.title = json.title;
